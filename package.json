@@ -1,0 +1,22 @@
+{
+  "name": "shelter-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon -e css,js,hbs app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "hbs": "^4.2.0",
+    "mongoose": "^8.8.4",
+    "morgan": "^1.10.0"
+  }
+}
