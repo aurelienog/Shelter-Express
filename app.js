@@ -8,6 +8,8 @@ const app = express();
 app.set("view engine", "hbs");
 app.set("views", `${__dirname}/views`);
 hbs.registerPartials(__dirname + '/views/partials');
+app.use(express.static(`${__dirname}/public`));
+
 
 app.use(logger('dev'));
 app.use(express.urlencoded());
@@ -22,4 +24,12 @@ app.use(dogsRoutes);
 const catsRoutes = require('./routes/cats.routes')
 app.use(catsRoutes);
 */
-app.listen(3000, () => { console.log("app running on port 3000") });
+
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500);
+  res.send("Ops, ha sucedido un error");
+})
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => { console.log("app running on port 3000") });

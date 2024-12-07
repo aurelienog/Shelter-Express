@@ -1,6 +1,35 @@
+
+  {{#if errors}}
+<div> Review form data 
+</div>  
+  {{/if}}
+
 <form method="post" action="/users">
-  <input name="name" placeholder="name">
-  <input name="email" type="email" placeholder="email">
-  <input name="password" type="password" placeholder="password">
+  <div>
+  {{#if errors.name}}
+    <div>
+      {{errors.name.message}}
+    </div>
+  {{/if}}
+  <input name="name" placeholder="name" value="{{user.name}}" class="{{#if errors.name}}alert{{/if}}">
+  </div>
+  <div>
+    {{#if errors.email}}
+      <div>
+        {{errors.email.message}}
+      </div>
+    {{/if}}
+    <input name="email" type="email" placeholder="email" value="{{user.email}}" class="{{#if errors.email}}alert{{/if}}">  
+  </div>
+  
+  <div>
+    {{#if errors.password}}
+    <div>
+      {{errors.password.message}}
+    </div>
+    {{/if}}
+    <input name="password" type="password" placeholder="password" class="{{#if errors.password}}alert{{/if}}">
+  </div>
+    
   <button type="submit">Submit</button>
 </form>

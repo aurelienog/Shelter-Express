@@ -1,7 +1,7 @@
 const routes = require('express').Router();
 const users = require('../controllers/users.controller');
 
-routes.get('/users', users.list);
+routes.get('/users', users.login);
 
 routes.get('/users/create', users.create)
 routes.post('/users', users.doCreate)

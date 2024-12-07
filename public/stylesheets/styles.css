@@ -1,0 +1,12 @@
+.navBarContainer {
+  display: flex;
+  flex-direction: row
+};
+
+h1 {
+  color: blue;
+}
+
+.alert {
+  border-color: red;
+}
