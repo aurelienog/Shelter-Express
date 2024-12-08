@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon -e css,js,hbs app.js"
+    "dev": "nodemon -e css,js,hbs app.js",
+    "tailDev": "npx tailwindcss -i ./public/stylesheets/tailwind.css -o ./public/stylesheets/styles.css --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^3.1.7"
+    "nodemon": "^3.1.7",
+    "tailwindcss": "^3.4.16"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
