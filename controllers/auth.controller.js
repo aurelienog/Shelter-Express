@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const User = require('../models/user.model');
 const bcrypt = require('bcrypt');
 
-
 module.exports.login = (req, res, next) => {
   User.find()
     .then((users) => {
@@ -13,23 +12,19 @@ module.exports.login = (req, res, next) => {
     });
 };
 
-const session = {};
 module.exports.doLogin = (req, res, next) => {
   User.findOne({email : req.body.email})
     .then((user) => {
-      bcrypt.compare(req.body.password, user.password).then(ok => {
-        if (ok) {
-          const sessionId = ((Math.random() + 1).toString(36).substring(7));
-          session[sessionId] = user.id;
-
-          res.set("Set-Cookie", `sessionid=${sessionId}`);
-          res.redirect("/");
-        } 
+      bcrypt
+        .compare(req.body.password, user.password)
+        .then((ok) => {
+          if (ok) {
+            req.session.userId = user.id;           
+            res.redirect("/");
+          } 
       })
       .catch(next)
     .catch(next);
-
-
     
     })
     .catch((err) => {

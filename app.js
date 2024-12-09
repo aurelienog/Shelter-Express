@@ -4,6 +4,7 @@ const logger = require('morgan');
 require('./config/db.config')
 const app = express();
 
+const { session } = require('./config/session.config')
 
 app.set("view engine", "hbs");
 app.set("views", `${__dirname}/views`);
@@ -13,6 +14,7 @@ app.use(express.static(`${__dirname}/public`));
 
 app.use(logger('dev'));
 app.use(express.urlencoded());
+app.use(session);
 
 
 const commonRoutes = require('./routes/common.routes');
