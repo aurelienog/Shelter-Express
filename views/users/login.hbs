@@ -8,7 +8,7 @@
       </div>
       {{/if}}
       <input name="email" type="email" placeholder="email" value="{{user.email}}"
-        class="{{#if errors.email}}border-red-600 border-4{{/if}}">
+        class="{{#if errors.email}}border-red-600 border-4{{/if}} border-2 m-1 p-1">
     </div>
   
     <div>
@@ -18,7 +18,7 @@
       </div>
       {{/if}}
       <input name="password" type="password" placeholder="password"
-        class="{{#if errors.password}}border-red-600 border-4{{/if}}">
+        class="{{#if errors.password}}border-red-600 border-4{{/if}} border-2 m-1 p-1">
     </div>
   
     <button type="submit">Submit</button>
