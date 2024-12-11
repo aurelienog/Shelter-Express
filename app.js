@@ -22,8 +22,11 @@ const commonRoutes = require('./routes/common.routes');
 app.use("/", commonRoutes);
 const usersRoutes = require('./routes/users.routes');
 app.use("/", usersRoutes);
-/*const dogsRoutes = require('./routes/dogs.routes')
+
+const dogsRoutes = require('./routes/dogs.routes')
 app.use(dogsRoutes);
+
+/*
 const catsRoutes = require('./routes/cats.routes')
 app.use(catsRoutes);
 */

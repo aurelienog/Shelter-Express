@@ -4,31 +4,31 @@
 </div>  
   {{/if}}
 
-<form method="post" action="/users/create">
+<form class="flex flex-col justify-center items-center space-y-4 m-10"method="post" action="/users/create">
   <div>
   {{#if errors.name}}
-    <div>
+    <div class="text-red-600">
       {{errors.name.message}}
     </div>
   {{/if}}
-  <input name="name" placeholder="name" value="{{user.name}}" class="{{#if errors.name}}border-red-600 border-4{{/if}}">
+  <input name="name" placeholder="Name" value="{{user.name}}" class="block border  focus:bg-green-400 focus:placeholder:text-white focus:text-white {{#if errors.name}}border-red-600 border-2 placeholder-shown:bg-red-400 {{/if}}">
   </div>
   <div>
     {{#if errors.email}}
-      <div>
+      <div class="text-red-600">
         {{errors.email.message}}
       </div>
     {{/if}}
-    <input name="email" type="email" placeholder="email" value="{{user.email}}" class="{{#if errors.email}}border-red-600 border-4{{/if}}">  
+    <input name="email" type="mail" placeholder="Email" value="{{user.email}}" class="block border {{#if errors.email}}border-red-600 border-2{{/if}}">  
   </div>
   
   <div>
     {{#if errors.password}}
-    <div>
+    <div class="text-red-600">
       {{errors.password.message}}
     </div>
     {{/if}}
-    <input name="password" type="password" placeholder="password" class="{{#if errors.password}}border-red-600 border-4{{/if}}">
+    <input name="password" type="password" placeholder="Password" class="block border {{#if errors.password}}border-red-600 border-2{{/if}}">
   </div>
     
   <button type="submit">Submit</button>

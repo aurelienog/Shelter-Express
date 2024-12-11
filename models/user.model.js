@@ -2,17 +2,17 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const schema = new mongoose.Schema({
-  name: { type: String, required: [true, "name is required"] },
+  name: { type: String, required: [true, "Name is required:"] },
   email: {
     type: String,
-    required: [true, "email is required"],
+    required: [true, "Email is required:"],
     match: [/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, "Please fill a valida email address"],
     unique: true,
     lowercase: true,
     trim: true
   },
   password: {
-    type: String, required: [true, "password is required"],
+    type: String, required: [true, "Password is required:"],
     minLength: [8, "min length: 8"]
   },
 }, { timestamps: true });
