@@ -10,9 +10,9 @@ module.exports.list = (req, res, next) => {
 }
 
 module.exports.detail = (req, res, next) => {
-    Dog.findById(req.params)
-    .then((dogs) => {
-      res.render('./dogs/detail', { dogs : dogs } );
+    Dog.findById(req.params.id)
+    .then((dog) => {
+      res.render('./dogs/detail', { dog : dog } );
     })
     .catch(next)
 }
@@ -24,6 +24,7 @@ module.exports.create = (req, res, next) => {
 module.exports.doCreate = (req, res, next) => {
   Dog.create(req.body)
     .then((dog) => {
+      image = req.body.image;
       name = req.body.name;
       age = req.body.age;
       breed = req.body.breed;
@@ -37,7 +38,16 @@ module.exports.doCreate = (req, res, next) => {
       livingWithCats = req.body.livingWithCats;
       res.redirect(`/dogs/`)
     })
-    .catch(next);
+    .catch((err) => {
+      if (err instanceof mongoose.Error.ValidationError) {
+        res.render('./dogs/create', {
+          errors: err.errors,
+          dog: req.body
+        })
+      } else {
+        next(err);
+      };
+    });
 }
 
 module.exports.update = (req, res, next) => {
@@ -45,7 +55,7 @@ module.exports.update = (req, res, next) => {
 }
 
 module.exports.doUpdate = (req, res, next) => {
-  Dog.findByIdAndUpdate(req.params, req.body)
+  Dog.findByIdAndUpdate(req.params.id, req.body)
     .then((dog) => {
       name = req.body.name;
       age = req.body.age;
@@ -64,7 +74,7 @@ module.exports.doUpdate = (req, res, next) => {
 }
 
 module.exports.delete = (req, res, next) => {
-  Dog.findOneAndDelete(req.params)
+  Dog.findOneAndDelete(req.params.id)
     .then(res.redirect("/"))
     .catch(next)
 }

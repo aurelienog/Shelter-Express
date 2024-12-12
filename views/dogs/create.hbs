@@ -1,0 +1,164 @@
+{{#if errors}}
+<div> Review form data
+</div>
+{{/if}}
+
+<form class="flex flex-col items-center space-y-4 w-1/4 p-10 border" method="post" action="/dogs/create">
+  {{#if errors.image}}
+  <div class="text-red-600">
+    {{errors.image.message}}
+  </div>
+  {{/if}}
+  <div>
+    <label for="image">image</label>
+    <img id="image"  src="{{dog.image}}" width="200" alt="Image preview" />
+    <input id="image-input" value="{{dog.image}}" name="image" onchange="readURL(this)" accept="image/*" type="file" />
+  </div>
+  {{#if errors.name}}
+  <div class="text-red-600">
+    {{errors.name.message}}
+  </div>
+  {{/if}}
+  <div>
+    <input name="name" placeholder="Name" value="{{dog.name}}" class="block border  focus:bg-green-400 focus:placeholder:text-white focus:text-white {{#if errors.name}}border-red-600 border-2 placeholder-shown:bg-red-400 {{/if}}">
+  </div>
+    {{#if errors.sex}}
+      <div class="text-red-600">
+        {{errors.sex.message}}
+      </div>
+    {{/if}}
+
+    <fieldset>
+      <legend>Select a sex:</legend>
+    
+      <div>
+        <input type="radio" id="male" name="sex" value="male">
+        <label for="male">Male</label>
+      </div>
+    
+      <div>
+        <input type="radio" id="female" name="sex" value="female">
+        <label for="female">Female</label>
+      </div>
+    </fieldset>
+
+  <div>
+    {{#if errors.age}}
+      <div class="text-red-600">
+        {{errors.age.message}}
+      </div>
+    {{/if}}
+    <input name="age" placeholder="Age" value="{{dog.age}}"
+      class="block border  focus:bg-green-400 focus:placeholder:text-white focus:text-white {{#if errors.age}}border-red-600 border-2 placeholder-shown:bg-red-400 {{/if}}">
+  </div>
+  
+  <input name="breed" placeholder="breed" value="{{dog.breed}}" class="border">
+
+    <div>
+      {{#if errors.size}}
+      <div class="text-red-600">
+        {{errors.size.message}}
+      </div>
+      {{/if}}
+
+      <fieldset>
+        <legend>Choose a size:</legend>
+        <div>
+          <input type="radio" id="small" name="size" value="small">
+          <label for="small">Small</label>
+        </div>
+        <div>
+          <input type="radio" id="medium" name="size" value="medium">
+          <label for="medium">Medium</label>
+        </div>
+        <div>
+          <input type="radio" id="large" name="size" value="large">
+          <label for="large">Large</label>
+        </div>              
+        <div>
+          <input type="radio" id="xl" name="size" value="xl">
+          <label for="xl">Extra-large</label>
+        </div>
+    
+      </fieldset>
+    </div>
+    
+  </div>
+
+  <div>
+    <input name="weight" type="Number" placeholder="Weight" value="{{dog.weight}}"
+      class="block border  focus:bg-green-400 focus:placeholder:text-white focus:text-white {{#if errors.weight}}border-red-600 border-2 placeholder-shown:bg-red-400 {{/if}}">
+  </div>
+
+  <div>
+    {{#if errors.licence}}
+      <div class="text-red-600">
+        {{errors.licence.message}}
+      </div>
+    {{/if}}
+    <fieldset>
+      <legend>Need a licence?</legend>
+      <div>
+        <input type="radio" id="yes" name="licence" value="yes">
+        <label for="yes">Yes</label>
+      </div>
+        
+      <div>
+        <input type="radio" id="no" name="licence" value="no">
+        <label for="no">No</label>
+      </div>
+    </fieldset>
+  </div>
+
+  <div>
+    <fieldset>
+      <legend>Choose an ideal home?</legend>
+    
+      <div>
+        <input type="radio" id="any" name="idealHome" value="any">
+        <label for="any">Any Location</label>
+      </div>
+    
+      <div>
+        <input type="radio" id="away" name="idealHome" value="away">
+        <label for="away">Away From Inner City</label>
+      </div>
+
+    </fieldset>
+  </div> 
+
+  
+
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+  // Máximo tamaño permitido para el archivo (5MB)
+  const MAX_FILE_SIZE = 5 * 1024 * 1024;
+
+  // Actualiza la imagen en el cliente al seleccionar un archivo
+  document.getElementById("image-input").onchange = (event) => {
+    const file = event.target.files[0]; // Obtén el archivo cargado
+
+    // Validar el tipo de archivo
+    if (!file.type.startsWith("image/")) {
+      alert("Por favor selecciona un archivo de imagen válido.");
+      event.target.value = ""; // Limpia el input si no es válido
+      return;
+    }
+
+    // Validar el tamaño del archivo
+    if (file.size > MAX_FILE_SIZE) {
+      alert("El archivo es demasiado grande. El tamaño máximo permitido es de 5MB.");
+      event.target.value = ""; // Limpia el input si no es válido
+      return;
+    }
+
+    // Usar FileReader para mostrar la vista previa de la imagen
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      document.getElementById("image").src = e.target.result; // Establece la URL de datos como src
+    };
+    reader.readAsDataURL(file); // Convierte el archivo en una URL de datos
+  };
+</script>
