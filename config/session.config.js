@@ -1,5 +1,6 @@
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+const User = require('../models/user.model');
 
 const MONGODB_URI = process.env.MONGODB_URI ||  'mongodb://127.0.0.1:27017/shelter-express';
 

@@ -12,6 +12,11 @@ const schema = new mongoose.Schema({
   livingWithChildren: { type: Boolean, required: false },
   livingWithDogs: { type: Boolean, required: false },
   livingWithCats: { type: Boolean, required: false },
+  user: { 
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: [true, "user is required"] 
+    },
 }, { timestamps: true })
 
 module.exports = mongoose.model('Dog', schema);

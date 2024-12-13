@@ -1,10 +1,12 @@
+{{#if currentUser}}
 <a href="/dogs/create">Add a dog</a>
+{{/if}}
 
-<div class="flex">
+<div class="h-screen grid w-[90%] gap-8 auto-rows-max mx-auto max-w-screen-lg justify-items-center">
 {{#each dogs as |dog|}}
-  <article  class="grid gap-8 px-8 py-4">
-    <img class="rounded-full aspect-square object-cover max-w-sm w-4/5 md:lg:rounded-none" src="{{dog.image}}">
+  <article class="grid gap-8 px-8 py-4">
     <h2 class="text-3xl font-bold text-center">{{dog.name}}</h2>
+    <img class="rounded-full aspect-square object-cover max-w-sm w-4/5 md:lg:rounded-none" src="{{dog.image}}">
     <h3>{{dog.sex}}, {{dog.age}} years old</h3>
     <p class="leading-10 text-gray-600">{{dog.breed}}</p>
     <p class="leading-10 text-gray-600">{{dog.sex}}</p>

@@ -3,13 +3,13 @@
 </div>
 {{/if}}
 
-<form class="flex flex-col items-center space-y-4 w-1/4 p-10 border" method="post" action="/dogs/create">
+<form class="flex flex-col items-center space-y-4 w-1/4 p-10 border m-96" method="post" action="/dogs/create">
   {{#if errors.image}}
   <div class="text-red-600">
     {{errors.image.message}}
   </div>
   {{/if}}
-  <div>
+  <div class="flex flex-col items-center">
     <label for="image">image</label>
     <img id="image"  src="{{dog.image}}" width="200" alt="Image preview" />
     <input id="image-input" value="{{dog.image}}" name="image" onchange="readURL(this)" accept="image/*" type="file" />
@@ -22,6 +22,7 @@
   <div>
     <input name="name" placeholder="Name" value="{{dog.name}}" class="block border  focus:bg-green-400 focus:placeholder:text-white focus:text-white {{#if errors.name}}border-red-600 border-2 placeholder-shown:bg-red-400 {{/if}}">
   </div>
+  <div>
     {{#if errors.sex}}
       <div class="text-red-600">
         {{errors.sex.message}}
@@ -41,7 +42,7 @@
         <label for="female">Female</label>
       </div>
     </fieldset>
-
+  </div>
   <div>
     {{#if errors.age}}
       <div class="text-red-600">

@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const Dog = require('../models/dog.model');
+const User = require('../models/user.model');
+const { doLogin } = require('./auth.controller');
 
 module.exports.list = (req, res, next) => {
   Dog.find()
@@ -10,7 +12,8 @@ module.exports.list = (req, res, next) => {
 }
 
 module.exports.detail = (req, res, next) => {
-    Dog.findById(req.params.id)
+  Dog.findById(req.params.id)
+    .populate('user')
     .then((dog) => {
       res.render('./dogs/detail', { dog : dog } );
     })
@@ -22,7 +25,10 @@ module.exports.create = (req, res, next) => {
 }
 
 module.exports.doCreate = (req, res, next) => {
-  Dog.create(req.body)
+    const dog = req.body;
+    dog.user = req.user.id;
+
+  Dog.create(dog)
     .then((dog) => {
       image = req.body.image;
       name = req.body.name;
@@ -36,7 +42,7 @@ module.exports.doCreate = (req, res, next) => {
       livingWithChildren = req.body.livingWithChildren;
       livingWithDogs = req.body.livingWithDogs;
       livingWithCats = req.body.livingWithCats;
-      res.redirect(`/dogs/`)
+      res.redirect("/dogs")
     })
     .catch((err) => {
       if (err instanceof mongoose.Error.ValidationError) {
@@ -74,7 +80,17 @@ module.exports.doUpdate = (req, res, next) => {
 }
 
 module.exports.delete = (req, res, next) => {
-  Dog.findOneAndDelete(req.params.id)
-    .then(res.redirect("/"))
+  Dog.findById(req.params.id)
+    .then(dog => { console.log(dog.id)
+      if (!dog) {
+      res.redirect("/dogs")
+      } else if (dog.user == req.user.id) {
+        dog.deleteOne()
+        .then(() => res.redirect("/dogs"))
+        .catch(next)
+      } else {
+        res.redirect("/dogs")
+      }
+  })
     .catch(next)
 }

@@ -2,13 +2,14 @@ const express = require('express');
 const hbs = require('hbs');
 const logger = require('morgan');
 require('./config/db.config')
+require("./config/hbs.config");
 const app = express();
 
 const { session, loadSessionUser } = require('./config/session.config')
 
 app.set("view engine", "hbs");
 app.set("views", `${__dirname}/views`);
-hbs.registerPartials(__dirname + '/views/partials');
+
 app.use(express.static(`${__dirname}/public`));
 
 
@@ -17,6 +18,10 @@ app.use(express.urlencoded());
 app.use(session);
 app.use(loadSessionUser);
 
+app.use((req, res, next) => {
+  res.locals.currentPath = req.path;
+  next();
+});
 
 const commonRoutes = require('./routes/common.routes');
 app.use("/", commonRoutes);

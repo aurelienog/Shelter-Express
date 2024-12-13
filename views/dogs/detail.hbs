@@ -1,8 +1,10 @@
 <h1>{{dog.name}}</h1>
 
-
-<form method="post" action="/dogs/{{dog.id}}/delete">
+{{#isOwnedBy dog currentUser}}
+<form method="post" action="/dogs/{{../dog.id}}/delete">
   <button type="submit">Delete</button> 
 </form>
 
-<a href="/dogs/{{dog.id}}/update">Edit</a>
+<a href="/dogs/{{../dog.id}}/update">Edit</a>
+
+{{/isOwnedBy}}
