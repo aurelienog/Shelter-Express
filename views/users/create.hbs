@@ -1,52 +1,64 @@
-<main class="bg-bg-topo-image bg-contain h-80">
+<main class="w-[90%] h-full grid max-w-screen-xl mx-auto md:grid-cols-[2fr_3fr] lg:grid-cols-2">
 
-  <div>
+  <div class="bg-bg-topo-image bg-cover b-center hidden md:block">
 
   </div>
+
   <section>
-
-
 
   {{#if errors}}
 <div> Review form data 
 </div>  
   {{/if}}
 
-<form class="flex flex-col justify-center items-center space-y-4 m-10"method="post" action="/users/create">
-  <div>
+<form class="h-full max-w-md mx-auto py-16 px-6 flex flex-col gap-4 justify-center"method="post" action="/users/create">
+
+<article class="space-y-4 mb-8">
+  <h2 class="text-3xl font-medium">Create an account</h2>
+</article>
+
+  <div class="grid">
   {{#if errors.name}}
     <div class="text-red-600">
       {{errors.name.message}}
     </div>
   {{/if}}
-  <input name="name" placeholder="Name" value="{{user.name}}" class="block border  focus:bg-green-400 focus:placeholder:text-white focus:text-white {{#if errors.name}}border-red-600 border-2 placeholder-shown:bg-red-400 {{/if}}">
+  <input name="name" placeholder="Name" value="{{user.name}}" class="input-reset block  focus:bg-green-400 focus:placeholder:text-white focus:text-white {{#if errors.name}}border-red-600 border-2 placeholder-shown:bg-red-400 {{/if}}">
   </div>
-  <div>
+
+  <div class="grid">
     {{#if errors.email}}
       <div class="text-red-600">
         {{errors.email.message}}
       </div>
     {{/if}}
-    <input name="email" type="mail" placeholder="Email" value="{{user.email}}" class="block border {{#if errors.email}}border-red-600 border-2{{/if}}">  
+    <input name="email" type="mail" placeholder="Email" value="{{user.email}}" class="input-reset block {{#if errors.email}}border-red-600 border-2{{/if}}">  
   </div>
   
-  <div>
+  <div class="grid">
     {{#if errors.password}}
     <div class="text-red-600">
       {{errors.password.message}}
     </div>
     {{/if}}
-    <input name="password" type="password" placeholder="Password" class="block border {{#if errors.password}}border-red-600 border-2{{/if}}">
+    <input name="password" type="password" placeholder="Password" class="input-reset block {{#if errors.password}}border-red-600 border-2{{/if}}">
   </div>
-  <article>
-    <button type="submit">Create Account</button>
-      <button type="submit">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+
+  <article class="grid gap-6 mt-8">
+    <button type="submit" class="bg-black text-white text-center p-4 rounded-3xl border
+    hover:bg-white hover:text-black hover:border-black transition-colors">Create Account</button>
+
+    <button type="submit" class="bg-white text-black text-center p-4 rounded-3xl border border-black flex items-center justify-center gap-2
+    hover:bg-black hover:text-white hover:border-black transition-colors group">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-black group-hover:fill-white">
         <path d="M20.283 10.356h-8.327v3.451h4.792c-.446 2.193-2.313 3.453-4.792 3.453a5.27 5.27 0 0 1-5.279-5.28 5.27 5.27 0 0 1 5.279-5.279c1.259 0 2.397.447 3.29 1.178l2.6-2.599c-1.584-1.381-3.615-2.233-5.89-2.233a8.908 8.908 0 0 0-8.934 8.934 8.907 8.907 0 0 0 8.934 8.934c4.467 0 8.529-3.249 8.529-8.934 0-.528-.081-1.097-.202-1.625z"></path>
         </svg>
       Sign up with Google
       </button>
   </article>
+
+    <p class="mt-6 text-center">Already have an account?<a href="/users" class="text-green-600 text-lg inline-block ml-2">Sign in</a></p>
+    
   
 </form>
   </section>
