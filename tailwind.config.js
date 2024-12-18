@@ -14,8 +14,9 @@ module.exports = {
         },
       
         backgroundImage: {
-          "bg-open-menu": "url('../images/bg-open-menu.png')",
-          "bg-topo-image": "url('../images/topo.jpeg')"
+          "open-menu": "url('../assets/bg-open-menu.png')",
+          "close-menu": "url('../assets/bg-close-menu.svg')",
+          "bg-topo-image": "url('../assets/topo.jpeg')"
         }
     },
   },

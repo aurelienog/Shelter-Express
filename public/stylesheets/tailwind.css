@@ -2,8 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
+@layer components{
     .input-reset{
         @apply border-b border-b-black outline-none font-light p-2;
+    }
+}
+
+@layer utilities{
+    .clip-circle-0{
+        clip-path: circle(0% at top right);
+    }
+
+    .clip-circle-full{
+        clip-path: circle(150% at top right);
     }
 }
