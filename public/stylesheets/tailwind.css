@@ -2,10 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base{
+    h1, h2, h3, h4, h5, h6{
+        @apply font-bold;
+    }
+}
+
 @layer components{
     .input-reset{
         @apply border-b border-b-black outline-none font-light p-2;
     }
+
+    .focus-input{
+        @apply outline-none focus:right-1 focus:ring-green-600 focus:ring-inset transition;
+    }
+
 }
 
 @layer utilities{

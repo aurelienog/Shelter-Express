@@ -1,17 +1,38 @@
-{{#if currentUser}}
-<a href="/dogs/create">Add a dog</a>
-{{/if}}
+<section class="py-16 text-center">
+  <h2 class="text-3xl md:text-5xl">Our compagnons</h2>
+    <p class="mt-8 mb-16 leading-normal text-gray-color md:w-4/5 md:mx-auto">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel
+            suscipit voluptate obcaecati iure, nesciunt quod unde sunt repellat
+            similique delectus.
+    </p>
 
-<div class="h-screen grid w-[90%] gap-8 auto-rows-max mx-auto max-w-screen-lg justify-items-center">
+    <div>
+      {{#if currentUser}}
+        <a href="/dogs/create" class="border rounded-lg bg-green-600 p-2 cursor-pointer">Add a dog</a>
+      {{/if}}
+    </div>
+
+
+<div class="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] justify-items-center auto-rows-fr gap-8 max-w-lg mx-auto">
+  
 {{#each dogs as |dog|}}
-  <article class="grid gap-8 px-8 py-4">
-    <h2 class="text-3xl font-bold text-center">{{dog.name}}</h2>
-    <img class="rounded-full aspect-square object-cover max-w-sm w-4/5 md:lg:rounded-none" src="{{dog.image}}">
-    <h3>{{dog.sex}}, {{dog.age}} years old</h3>
+  <article class="w-[200px] grid justify-items-center border py-12 px-8 cursor-pointer">
+    <h3 class="text-xl mt-4 mb-2 uppercase ">{{dog.name}}</h3>
+    <img class="w-[90%] rounded-full aspect-square object-cover max-w-sm mx-auto md:lg:rounded-none" src="{{dog.image}}">
+    <h4 class="mt-4 mb-2 uppercase">{{dog.sex}} <br> {{dog.age}} years old</h4>
     <p class="leading-10 text-gray-600">{{dog.breed}}</p>
-    <p class="leading-10 text-gray-600">{{dog.sex}}</p>
-    <p class="leading-10 text-gray-600">{{dog.size}}</p>
+    {{#if dog.licence}}
+    <div class="flex gap-1">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 aspect-square fill-green-600">
+    <path d="M11.001 10h2v5h-2zM11 16h2v2h-2z"></path><path d="M13.768 4.2C13.42 3.545 12.742 3.138 12 3.138s-1.42.407-1.768 1.063L2.894 18.064a1.986 1.986 0 0 0 .054 1.968A1.984 1.984 0 0 0 4.661 21h14.678c.708 0 1.349-.362 1.714-.968a1.989 1.989 0 0 0 .054-1.968L13.768 4.2zM4.661 19 12 5.137 19.344 19H4.661z"></path>
+      </svg>
+      <p class="leading-normal text-gray-600 underline decoration-2">Need a licence</p>
+    </div>   
+    {{/if}}
+
+    <p class="leading-normal text-gray-600">{{dog.size}}</p>
     <a href="/dogs/{{dog.id}}" class="bg-blue-700 text-white text-center py-6 rounded-xl font-bold hover:scale-110 transition-transform inline-block">Learn about me</a>
-{{/each}}
   </article>
+{{/each}} 
 </div>
+</section>
