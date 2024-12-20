@@ -1,35 +1,23 @@
+
 <section class="py-16">
 
-{{#if errors}}
-<div> Review form data
-</div>
-{{/if}}
+{{#if errors}}<div> Review form data</div>{{/if}}
 
 <form class="flex flex-col space-y-4 w-1/4 p-10 border mx-auto" method="post" action="/dogs/create">
-  {{#if errors.image}}
-  <div class="text-red-600">
-    {{errors.image.message}}
-  </div>
-  {{/if}}
+  
+  {{#if errors.image}}<div class="text-red-600">{{errors.image.message}}</div>{{/if}}
   <div class="flex flex-col">
     <label for="image">image</label>
     <img id="image"  src="{{dog.image}}" width="200" alt="Image preview" />
     <input id="image-input" value="{{dog.image}}" name="image" onchange="readURL(this)" accept="image/*" type="file" />
   </div>
-  {{#if errors.name}}
-  <div class="text-red-600">
-    {{errors.name.message}}
-  </div>
-  {{/if}}
+
+  {{#if errors.name}}<div class="text-red-600">{{errors.name.message}}</div>{{/if}}
   <div>
     <input name="name" placeholder="Name" value="{{dog.name}}" class="block border  focus:bg-green-400 focus:placeholder:text-white focus:text-white {{#if errors.name}}border-red-600 border-2 placeholder-shown:bg-red-400 {{/if}}">
   </div>
   <div>
-    {{#if errors.sex}}
-      <div class="text-red-600">
-        {{errors.sex.message}}
-      </div>
-    {{/if}}
+    {{#if errors.sex}}<div class="text-red-600">{{errors.sex.message}}</div>{{/if}}
 
     <fieldset>
       <legend>Select a sex:</legend>

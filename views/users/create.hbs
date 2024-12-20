@@ -20,7 +20,7 @@
   <div class="grid">
   {{#if errors.name}}
     <div class="text-red-600">
-      {{errors.name.message}}
+      {{errors.name}}
     </div>
   {{/if}}
   <input name="name" placeholder="Name" value="{{user.name}}" class="block input-reset .focus-input focus:placeholder:text-black focus:text-black {{#if errors.name}}border-red-600 border-2 placeholder-shown:bg-red-400 {{/if}}">
@@ -29,7 +29,7 @@
   <div class="grid">
     {{#if errors.email}}
       <div class="text-red-600">
-        {{errors.email.message}}
+        {{errors.email}}
       </div>
     {{/if}}
     <input name="email" type="mail" placeholder="Email" value="{{user.email}}" class="input-reset block {{#if errors.email}}border-red-600 border-2{{/if}}">  
@@ -38,7 +38,7 @@
   <div class="grid">
     {{#if errors.password}}
     <div class="text-red-600">
-      {{errors.password.message}}
+      {{errors.password}}
     </div>
     {{/if}}
     <input name="password" type="password" placeholder="Password" class="input-reset block {{#if errors.password}}border-red-600 border-2{{/if}}">

@@ -7,9 +7,9 @@
     </p>
 
     <div>
-      {{#if currentUser}}
+      {{#isAdmin currentUser}}
         <a href="/dogs/create" class="border rounded-lg bg-green-600 p-2 cursor-pointer">Add a dog</a>
-      {{/if}}
+      {{/isAdmin}}
     </div>
 
 

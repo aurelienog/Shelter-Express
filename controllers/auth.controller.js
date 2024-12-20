@@ -13,6 +13,7 @@ module.exports.login = (req, res, next) => {
 };
 
 module.exports.doLogin = (req, res, next) => {
+  
   User.findOne({email : req.body.email})
     .then((user) => {
       bcrypt
@@ -37,6 +38,34 @@ module.exports.create = (req, res, next) => {
 };
 
 module.exports.doCreate = (req, res, next) => {
+
+  delete req.body.role;
+
+  function renderWithErrors(errors) {
+    res.render('users/new', { errors, user: req.body })
+  };
+
+
+  User.findOne({ email: req.body.email })
+    .then(user => {
+      if (user) { 
+        renderWithErrors({ email: 'email already registered'});
+      } else { 
+        return User.create(req.body)
+          .then(() => res.redirect('/'))
+      }
+    })
+    .catch((error) => {
+      if (error instanceof mongoose.Error.ValidationError) {
+        renderWithErrors(error.errors); 
+      } else {
+        next(error);
+      }
+    })
+};
+
+/* 
+
   User.create(req.body)
     .then((user) => {
       name = req.body.name;
@@ -54,8 +83,7 @@ module.exports.doCreate = (req, res, next) => {
       } else {
         next(err);
       }
-    });
-};
+    }); */
 
 module.exports.detail = (req, res, next) => {
   User.findById(req.params.id)
@@ -78,6 +106,7 @@ module.exports.update = (req, res, next) => {
 };
 
 module.exports.doUpdate = (req, res, next) => {
+  delete req.body.role;
   User.findByIdAndUpdate(req.params.id, req.body)
     .then((user) => {
       name = req.body.name;

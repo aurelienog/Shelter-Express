@@ -24,3 +24,11 @@ hbs.registerHelper('isOwnedBy', (dog, user, options) => {
     return options.inverse();
   }
 });
+
+hbs.registerHelper('isAdmin', (user, options) => {
+  if (user && user.role === 'admin') {
+    return options.fn();
+  } else {
+    return options.inverse();
+  }
+});
