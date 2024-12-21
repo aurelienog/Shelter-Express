@@ -25,9 +25,15 @@ module.exports.create = (req, res, next) => {
 }
 
 module.exports.doCreate = (req, res, next) => {
-    const dog = req.body;
+  console.log('body', req.body);
+    console.log('file',req.file);
+    if (req.file) {
+      req.body.image = req.file.path;
+    }
+    
+  const dog = req.body;
     dog.user = req.user.id;
-
+    
   Dog.create(dog)
     .then((dog) => {
       image = req.body.image;

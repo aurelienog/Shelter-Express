@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const hbs = require('hbs');
 const logger = require('morgan');
@@ -45,8 +46,6 @@ app.use((req, res, next) => {
 
 app.use((error, req, res, next) => {
   error = !error.status? createError(500, error) : error;
-  console.error(error);
-
   res.status(error.status);
 
   switch (error.status) {
