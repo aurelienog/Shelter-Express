@@ -1,24 +1,32 @@
-<section class="py-16 text-center">
-  <h2 class="text-3xl md:text-5xl">Our compagnons</h2>
+<section class="w-[90%] mx-auto">
+
+  <div class="py-16 text-center">
+
+    <h2 class="text-3xl md:text-5xl">Our compagnons</h2>
+
     <p class="mt-8 mb-16 leading-normal text-gray-color md:w-4/5 md:mx-auto">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel
             suscipit voluptate obcaecati iure, nesciunt quod unde sunt repellat
             similique delectus.
     </p>
 
-    <div>
+    <div class="md:text-start my-8 flex gap-4 ">
       {{#isAdmin currentUser}}
-        <a href="/dogs/create" class="border rounded-lg bg-green-600 p-2 cursor-pointer">Add a dog</a>
+        <a href="/dogs/create" class="border rounded-lg bg-green-600 p-2 cursor-pointer inline-block">Add a dog</a>
+      {{/isAdmin}}
+
+      {{#isAdmin currentUser}}
+        <a href="/cats/create" class="border rounded-lg bg-green-600 p-2 cursor-pointer inline-block">Add a cat</a>
       {{/isAdmin}}
     </div>
 
 
-<div class="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] justify-items-center auto-rows-fr gap-8 max-w-lg mx-auto">
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] justify-items-center auto-rows-fr gap-8 mx-auto ">
   
 {{#each dogs as |dog|}}
-  <article class="w-[200px] grid justify-items-center border py-12 px-8 cursor-pointer">
+  <article class=" grid justify-items-center border p-8 cursor-pointer shadow-black shadow-md">
     <h3 class="text-xl mt-4 mb-2 uppercase ">{{dog.name}}</h3>
-    <img class="w-[90%] rounded-full aspect-square object-cover max-w-sm mx-auto md:lg:rounded-none" src="{{dog.image}}">
+    <img class="w-[90%] aspect-square rounded-full max-w-sm mx-auto md:lg:rounded-none" src="{{dog.image}}">
     <h4 class="mt-4 mb-2 uppercase">{{dog.sex}} <br> {{dog.age}} years old</h4>
     <p class="leading-10 text-gray-600">{{dog.breed}}</p>
     {{#if dog.licence}}
@@ -30,9 +38,12 @@
     </div>   
     {{/if}}
 
-    <p class="leading-normal text-gray-600">{{dog.size}}</p>
-    <a href="/dogs/{{dog.id}}" class="bg-blue-700 text-white text-center py-6 rounded-xl font-bold hover:scale-110 transition-transform inline-block">Learn about me</a>
+    <p class="leading-normal text-gray-600">Size : {{dog.size}}</p>
+    <a href="/dogs/{{dog.id}}" class="bg-blue-700 text-white text-center py-4 px-2 mt-6 rounded-xl font-bold hover:scale-110 transition-transform inline-block">Learn about me</a>
   </article>
 {{/each}} 
+
 </div>
+
+  </div>
 </section>

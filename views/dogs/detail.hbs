@@ -1,4 +1,8 @@
-<h1>{{dog.name}}</h1>
+<div>
+
+<h2>{{dog.name}}</h2>
+
+<img src="{{dog.image}}" alt="" class="w-[30%] object-cover">
 
 {{#isOwnedBy dog currentUser}}
 <form method="post" action="/dogs/{{../dog.id}}/delete">
@@ -8,3 +12,6 @@
 <a href="/dogs/{{../dog.id}}/update">Edit</a>
 
 {{/isOwnedBy}}
+
+
+</div>
