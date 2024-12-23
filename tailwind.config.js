@@ -7,16 +7,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "primary-color": "#cfc0bd",
-        "hover-color": "#272832",
-        "accent-color": "94b1bc", /*"#0071FF",*/
-        "text-color": "#c9c9c9",
+        "primary-color": "#588157",
+        "hover-color": "#fffdd0",
+        "accent-color": "#f9e2dc", 
+        "text-color": "#cfc0bd",
         },
       
         backgroundImage: {
           "open-menu": "url('../assets/bg-open-menu.png')",
           "close-menu": "url('../assets/bg-close-menu.svg')",
-          "bg-topo-image": "url('../assets/topo.jpeg')"
+          "bg-topo-image": "url('../assets/topo.jpeg')",
+          
         }
     },
   },
