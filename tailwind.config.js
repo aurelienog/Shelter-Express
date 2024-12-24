@@ -7,9 +7,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "primary-color": "#588157",
+        "primary-color": "#f9e2dc", 
         "hover-color": "#fffdd0",
-        "accent-color": "#f9e2dc", 
+        "accent-color": "#588157", 
         "text-color": "#cfc0bd",
         },
       
@@ -17,7 +17,7 @@ module.exports = {
           "open-menu": "url('../assets/bg-open-menu.png')",
           "close-menu": "url('../assets/bg-close-menu.svg')",
           "bg-topo-image": "url('../assets/topo.jpeg')",
-          
+          "dog-shape": "url('../assets/dog-shape.jpg')",
         }
     },
   },

@@ -63,7 +63,9 @@ module.exports.doCreate = (req, res, next) => {
 }
 
 module.exports.update = (req, res, next) => {
-  res.render('./dogs/update');
+  Dog.findById(req.params.id)
+    .then(dog => res.render('./dogs/update', { dog : dog}))
+    .catch(next)
 }
 
 module.exports.doUpdate = (req, res, next) => {

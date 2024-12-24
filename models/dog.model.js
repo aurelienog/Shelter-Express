@@ -12,6 +12,7 @@ const schema = new mongoose.Schema({
   livingWithChildren: { type: Boolean, required: false },
   livingWithDogs: { type: Boolean, required: false },
   livingWithCats: { type: Boolean, required: false },
+  about: {type: String, required: false},
   user: { 
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',

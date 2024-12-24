@@ -1,92 +1,29 @@
+<section class="bg-dog-shape bg-contain bg-no-repeat bg-center mb-14 min-w-fit">
 
-<section class="py-16">
+  <div class="bg-white/55 my-10">
 
-{{#if errors}}<div> Review form data</div>{{/if}}
+  <h1 class=" text-center text-3xl m-8 md:text-5xl">Welcome to the pack:</h1>
 
-<form class="flex flex-col space-y-4 w-1/4 p-10 border mx-auto md:grid md:grid-cols-2 md:w-3/4 md:gap-x-8 " method="post" action="/dogs/create" enctype="multipart/form-data">
+{{#if errors}} <div class="border border-red"> Review form data</div>{{/if}}
+
+
+<form class=" w-4/5  gap-4 rounded-lg flex flex-col p-10 border border-black mx-auto md:space-y-0 md:p-10 md:grid md:grid-cols-3 md:w-4/5 md:gap-4" method="post" action="/dogs/create" enctype="multipart/form-data">
   
-  {{#if errors.image}}<div class="text-red-600">{{errors.image.message}}</div>{{/if}}
-  <div class="flex flex-col border md:h-80 mx-auto items-center gap-3 ">
-    <label for="image">image</label>
+  <div class="border border-black rounded-lg flex flex-col p-2 md:col-start-1 row-start-1">
+    {{#if errors.name}}<div class="text-red-600 mb-2">{{errors.name.message}}</div>{{/if}}
+    <label for="name">Name</label>
+    <input name="name" id="name" placeholder="Name" value="{{dog.name}}" class="block border-b-2 bg-transparent border-emerald-600  p-1 my-1 focus:bg-green-400 focus:placeholder:text-white focus:text-white {{#if errors.name}}border-red-600 border-2 placeholder-shown:bg-red-400 {{/if}}">
+  </div>
+  
+  <div class="flex flex-col border border-black rounded-lg md:row-start-2 md:row-end-4">
+    {{#if errors.image}}<div class="text-red-600 mb-2">{{errors.image.message}}</div>{{/if}}
+    <label for="image-input">Please add a photo</label>
     <img id="image"  src="{{dog.image}}" width="200" alt="Image preview" />
-    <input id="image-input" name="image" onchange="readURL(this)" accept="image/*" type="file" />
+    <input id="image-input" name="image" onchange="readURL(this)" accept="image/*" type="file" class=" p-2 my-2 focus:bg-green-400"/>
   </div>
 
-  {{#if errors.name}}<div class="text-red-600">{{errors.name.message}}</div>{{/if}}
-  <div>
-    <input name="name" placeholder="Name" value="{{dog.name}}" class="block border  focus:bg-green-400 focus:placeholder:text-white focus:text-white {{#if errors.name}}border-red-600 border-2 placeholder-shown:bg-red-400 {{/if}}">
-  </div>
-  <div>
-    {{#if errors.sex}}<div class="text-red-600">{{errors.sex.message}}</div>{{/if}}
-
-    <fieldset>
-      <legend>Select a sex:</legend>
-    
-      <div>
-        <input type="radio" id="male" name="sex" value="male">
-        <label for="male">Male</label>
-      </div>
-    
-      <div>
-        <input type="radio" id="female" name="sex" value="female">
-        <label for="female">Female</label>
-      </div>
-    </fieldset>
-  </div>
-  <div>
-    {{#if errors.age}}
-      <div class="text-red-600">
-        {{errors.age.message}}
-      </div>
-    {{/if}}
-    <input name="age" placeholder="Age" value="{{dog.age}}"
-      class="block border  focus:bg-green-400 focus:placeholder:text-white focus:text-white {{#if errors.age}}border-red-600 border-2 placeholder-shown:bg-red-400 {{/if}}">
-  </div>
-  
-  <input name="breed" placeholder="breed" value="{{dog.breed}}" class="border">
-
-    <div>
-      {{#if errors.size}}
-      <div class="text-red-600">
-        {{errors.size.message}}
-      </div>
-      {{/if}}
-
-      <fieldset>
-        <legend>Choose a size:</legend>
-        <div>
-          <input type="radio" id="small" name="size" value="small">
-          <label for="small">Small</label>
-        </div>
-        <div>
-          <input type="radio" id="medium" name="size" value="medium">
-          <label for="medium">Medium</label>
-        </div>
-        <div>
-          <input type="radio" id="large" name="size" value="large">
-          <label for="large">Large</label>
-        </div>              
-        <div>
-          <input type="radio" id="xl" name="size" value="xl">
-          <label for="xl">Extra-large</label>
-        </div>
-    
-      </fieldset>
-    </div>
-    
-  </div>
-
-  <div>
-    <input name="weight" type="Number" placeholder="Weight" value="{{dog.weight}}"
-      class="block border  focus:bg-green-400 focus:placeholder:text-white focus:text-white {{#if errors.weight}}border-red-600 border-2 placeholder-shown:bg-red-400 {{/if}}">
-  </div>
-
-  <div>
-    {{#if errors.licence}}
-      <div class="text-red-600">
-        {{errors.licence.message}}
-      </div>
-    {{/if}}
+    <div  class="border border-black rounded-lg md:col-start-2">
+    {{#if errors.licence}}<div class="text-red-600 mb-2">{{errors.licence.message}}</div>{{/if}}
     <fieldset>
       <legend>Need a licence?</legend>
       <div>
@@ -101,7 +38,78 @@
     </fieldset>
   </div>
 
-  <div>
+  <div class="border border-black rounded-lg md:col-start-2">
+    {{#if errors.sex}}<div class="text-red-600 mb-2">{{errors.sex.message}}</div>{{/if}}
+  
+    <fieldset>
+      <legend>Select a sex:</legend>
+    
+      <div>
+        <input type="radio" id="male" name="sex" value="male">
+        <label for="male">Male</label>
+      </div>
+    
+      <div>
+        <input type="radio" id="female" name="sex" value="female">
+        <label for="female">Female</label>
+      </div>
+    </fieldset>
+  </div>
+
+  <div class="border border-black md:col-start-2">
+    {{#if errors.age}}<div class="text-red-600 mb-2">{{errors.age.message}}</div>{{/if}}
+    <label for="age">Age</label>
+    <input name="age" placeholder="Age" id="age" value="{{dog.age}}" type="number"
+      class="block border  focus:bg-green-400 focus:placeholder:text-white focus:text-white {{#if errors.age}}border-red-600 border-2 placeholder-shown:bg-red-400 {{/if}}">
+  </div>
+  
+  <div class="border border-black md:col-start-3">
+    <label for="breed">Breed</label>
+    <input name="breed" id="breed" placeholder="breed" value="{{dog.breed}}">
+  </div>
+  
+
+    <div class="border border-black md:col-start-3 md:row-start-1">
+      {{#if errors.size}}<div class="text-red-600 mb-2">{{errors.size.message}}</div>{{/if}}
+      <div>
+        <fieldset>
+          <legend>Choose a size:</legend>
+          <div>
+            <input type="radio" id="small" name="size" value="small">
+            <label for="small">Small</label>
+          </div>
+          <div>
+            <input type="radio" id="medium" name="size" value="medium">
+            <label for="medium">Medium</label>
+          </div>
+          <div>
+            <input type="radio" id="large" name="size" value="large">
+            <label for="large">Large</label>
+          </div>              
+          <div>
+            <input type="radio" id="xl" name="size" value="xl">
+            <label for="xl">Extra-large</label>
+          </div>
+        </fieldset>
+      </div>
+      
+    </div>
+    
+
+
+  <div  class="border border-black md:col-start-3 md:row-start-2 md:row-end-3"> 
+    <label for="weight">Weight</label>
+    <input name="weight" id="weight" type="Number" placeholder="Weight" value="{{dog.weight}}"
+      class="block border  focus:bg-green-400 focus:placeholder:text-white focus:text-white {{#if errors.weight}}border-red-600 border-2 placeholder-shown:bg-red-400 {{/if}}">
+  </div>
+
+
+  <div class="md:col-span-2 flex flex-col justify-center border border-black">
+    <label>Tell me more about our furry friend :</label>
+    <textarea placeholder="Leave a comment..." value="{{dog.about}}"></textarea>
+  </div>
+
+  <div  class="border border-black md:col-start-3 md:row-start-4">
     <fieldset>
       <legend>Choose an ideal home?</legend>
     
@@ -118,10 +126,10 @@
     </fieldset>
   </div> 
 
-  
 
-  <button type="submit">Submit</button>
+  <button type="submit"  class="max-w-40 max-h-18 py-4 px-2 border border-black rounded-lg bg-accent-color md:col-span-3">Submit</button>
 </form>
+</div>
 </section>
 
 <script>

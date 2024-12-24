@@ -12,11 +12,15 @@
 
     <div class="md:text-start my-8 flex gap-4 ">
       {{#isAdmin currentUser}}
-        <a href="/dogs/create" class="border rounded-lg bg-green-600 p-2 cursor-pointer inline-block">Add a dog</a>
+        <a href="/dogs/create" class="border rounded-lg bg-accent-color p-2 cursor-pointer inline-block">Add a dog</a>
       {{/isAdmin}}
 
       {{#isAdmin currentUser}}
-        <a href="/cats/create" class="border rounded-lg bg-green-600 p-2 cursor-pointer inline-block">Add a cat</a>
+        <a href="/cats/create" class="border rounded-lg bg-accent-color p-2 cursor-pointer inline-block">Add a cat</a>
+      {{/isAdmin}}
+
+      {{#isAdmin currentUser}}
+        <a href="/cats/create" class="border rounded-lg bg-accent-color p-2 cursor-pointer inline-block">Add another animal</a>
       {{/isAdmin}}
     </div>
 
@@ -24,7 +28,7 @@
     <div class="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] justify-items-center auto-rows-fr gap-8 mx-auto ">
   
 {{#each dogs as |dog|}}
-  <article class=" grid justify-items-center border p-8 cursor-pointer shadow-black shadow-md">
+  <article class=" grid justify-items-center border rounded-lg p-8 cursor-pointer shadow-black shadow-md">
     <h3 class="text-xl mt-4 mb-2 uppercase ">{{dog.name}}</h3>
     <img class="w-[90%] aspect-square rounded-full max-w-sm mx-auto md:lg:rounded-none" src="{{dog.image}}">
     <h4 class="mt-4 mb-2 uppercase">{{dog.sex}} <br> {{dog.age}} years old</h4>
