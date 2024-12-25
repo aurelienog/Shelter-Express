@@ -9,12 +9,13 @@
 }
 
 @layer components{
+
     .input-reset{
-        @apply border-b border-b-black outline-none font-light p-2;
+        @apply outline-none ps-10 h-8 font-semibold border leading-6 rounded-lg transition-all ;
     }
 
     .focus-input{
-        @apply outline-none focus:right-1 focus:ring-green-600 focus:ring-inset transition;
+        @apply focus:h-10 focus:border-fuchsia-300 focus:border-4 outline-none  transition;
     }
 
 }

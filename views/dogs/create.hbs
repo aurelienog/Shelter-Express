@@ -1,125 +1,131 @@
-<section class="bg-dog-shape bg-contain bg-no-repeat bg-center mb-14 min-w-fit">
+<section class="bg-dog-shape bg-cover bg-no-repeat bg-top min-w-fit">
 
-  <div class="bg-white/55 my-10">
+  <div class="bg-red-400/55 my-10 md:pb-20">
 
-  <h1 class=" text-center text-3xl m-8 md:text-5xl">Welcome to the pack:</h1>
+  <h1 class="mb-20 underline text-center text-3xl md:text-5xl md:mb-10">Register a new dog </br> to the pack:</h1>
 
-{{#if errors}} <div class="border border-red"> Review form data</div>{{/if}}
+{{#if errors}} <div class=" text-center border-t-2 border-b-2 p-4 bg-white font-extrabold border-red-600">Please review form data</div>{{/if}} 
 
 
-<form class=" w-4/5  gap-4 rounded-lg flex flex-col p-10 border border-black mx-auto md:space-y-0 md:p-10 md:grid md:grid-cols-3 md:w-4/5 md:gap-4" method="post" action="/dogs/create" enctype="multipart/form-data">
+<form class="w-[45%] mx-auto mt-8 text-black gap-6 rounded-lg flex flex-col p-2 md:border-2 md:border-white md:space-y-0 md:p-10 md:grid md:grid-cols-2 md:w-4/5 md:gap-x-20 md:gap-y-4" method="post" action="/dogs/create" enctype="multipart/form-data">
   
-  <div class="border border-black rounded-lg flex flex-col p-2 md:col-start-1 row-start-1">
-    {{#if errors.name}}<div class="text-red-600 mb-2">{{errors.name.message}}</div>{{/if}}
-    <label for="name">Name</label>
-    <input name="name" id="name" placeholder="Name" value="{{dog.name}}" class="block border-b-2 bg-transparent border-emerald-600  p-1 my-1 focus:bg-green-400 focus:placeholder:text-white focus:text-white {{#if errors.name}}border-red-600 border-2 placeholder-shown:bg-red-400 {{/if}}">
-  </div>
-  
-  <div class="flex flex-col border border-black rounded-lg md:row-start-2 md:row-end-4">
-    {{#if errors.image}}<div class="text-red-600 mb-2">{{errors.image.message}}</div>{{/if}}
-    <label for="image-input">Please add a photo</label>
-    <img id="image"  src="{{dog.image}}" width="200" alt="Image preview" />
-    <input id="image-input" name="image" onchange="readURL(this)" accept="image/*" type="file" class=" p-2 my-2 focus:bg-green-400"/>
-  </div>
+  <div class="md:col-start-1 md:row-start-1">
 
-    <div  class="border border-black rounded-lg md:col-start-2">
-    {{#if errors.licence}}<div class="text-red-600 mb-2">{{errors.licence.message}}</div>{{/if}}
-    <fieldset>
-      <legend>Need a licence?</legend>
-      <div>
-        <input type="radio" id="yes" name="licence" value="yes">
-        <label for="yes">Yes</label>
-      </div>
-        
-      <div>
-        <input type="radio" id="no" name="licence" value="no">
-        <label for="no">No</label>
-      </div>
-    </fieldset>
+    <label for="name" class="font-bold">Name<span class="text-red-600">*</span></label>
+    
+    <div class="relative">
+      <div class="absolute inset-y-0 start-0 flex items-center ps-2.5 pointer-events-none">
+      <img src={{#if errors.name}}"../../assets/error.svg"{{/if}}"../../assets/id.svg" alt="" class="w-7 h-7 md:w-14 md:h-14">
+    </div>
+    <input name="name" id="name" value="{{dog.name}}" class="cursor-pointer{{#if errors.name}}border-red-600 border-4 py-4 placeholder:text-red-600 placeholder:font-bold {{/if}} input-reset focus-input md:w-full md:py-7 md:ps-20 md:text-4xl" {{#if errors.name}}placeholder="{{errors.name.message}}"{{/if}}>
+  </div>
   </div>
 
-  <div class="border border-black rounded-lg md:col-start-2">
-    {{#if errors.sex}}<div class="text-red-600 mb-2">{{errors.sex.message}}</div>{{/if}}
+  <div class="{{#if errors.sex}}border-red-600 border-4 px-4 py-2 w-[235px] relative  bg-white{{/if}} rounded-lg">
+    {{#if errors.sex}}<div class="text-red-600 font-bold flex items-center start-0 ps-2 pointer-events-none bg-white mb-2 absolute z-2">
+      <img src="../../assets/error.svg" class="w-7 h-7">{{errors.sex.message}}</div>{{/if}}
   
-    <fieldset>
-      <legend>Select a sex:</legend>
+    <fieldset class="mt-2">
+      <legend class="font-bold">Sex<span class="text-red-600">*</span></legend>
     
       <div>
-        <input type="radio" id="male" name="sex" value="male">
+        <input type="radio" id="male" name="sex" value="male" class="cursor-pointer">
         <label for="male">Male</label>
       </div>
     
       <div>
-        <input type="radio" id="female" name="sex" value="female">
+        <input type="radio" id="female" name="sex" value="female" class="cursor-pointer">
         <label for="female">Female</label>
       </div>
     </fieldset>
   </div>
 
-  <div class="border border-black md:col-start-2">
-    {{#if errors.age}}<div class="text-red-600 mb-2">{{errors.age.message}}</div>{{/if}}
-    <label for="age">Age</label>
-    <input name="age" placeholder="Age" id="age" value="{{dog.age}}" type="number"
-      class="block border  focus:bg-green-400 focus:placeholder:text-white focus:text-white {{#if errors.age}}border-red-600 border-2 placeholder-shown:bg-red-400 {{/if}}">
+  <div>
+    <label for="age" class="font-bold">Age<span class="text-red-600">*</span></label>
+        <div class="relative">
+      <div class="absolute inset-y-0 start-0 flex items-center ps-2.5 pointer-events-none">
+      <img src={{#if errors.age}}"../../assets/error.svg"{{/if}}"../../assets/age.svg" alt="" class="w-7 h-7">
+    </div>
+    <input name="age" id="age" value="{{dog.age}}" type="number"
+      class="cursor-pointer {{#if errors.age}}border-red-600 border-4 py-4 placeholder:text-red-600 placeholder:font-bold {{/if}} input-reset focus-input" {{#if errors.age}}placeholder="{{errors.age.message}}"{{/if}} >
+  </div>
   </div>
   
-  <div class="border border-black md:col-start-3">
-    <label for="breed">Breed</label>
-    <input name="breed" id="breed" placeholder="breed" value="{{dog.breed}}">
-  </div>
+  <div>
+    <label for="breed" class="font-bold">Breed</label>
+        <div class="relative">
+      <div class="absolute inset-y-0 start-0 flex items-center ps-2.5 pointer-events-none">
+      <img src="../../assets/dog.svg" alt="" class="w-7 h-7">
+    </div>
+    <input name="breed" id="breed" value="{{dog.breed}}" class="input-reset focus-input cursor-pointer">
+  </div></div>
   
-
-    <div class="border border-black md:col-start-3 md:row-start-1">
-      {{#if errors.size}}<div class="text-red-600 mb-2">{{errors.size.message}}</div>{{/if}}
+  <div class="{{#if errors.licence}}border-red-600 border-4 px-4 py-2 w-[235px] relative  bg-white{{/if}} rounded-lg">
+    {{#if errors.licence}}<div class="text-red-600 font-bold flex items-center start-0 ps-2 pointer-events-none bg-white mb-2 absolute z-2">
+      <img src="../../assets/error.svg" class="w-7 h-7">{{errors.licence.message}}</div>{{/if}}
+    <fieldset class="mt-2">
+      <legend class="font-bold">Need a licence?<span class="text-red-600">*</span></legend>
       <div>
-        <fieldset>
-          <legend>Choose a size:</legend>
+        <input type="radio" id="yes" name="licence" value="yes" class="cursor-pointer">
+        <label for="yes">Yes</label>
+      </div>
+        
+      <div>
+        <input type="radio" id="no" name="licence" value="no" class="cursor-pointer">
+        <label for="no">No</label>
+      </div>
+    </fieldset>
+  </div>
+
+  <div class="{{#if errors.size}}border-red-600 border-4 px-4 py-2 w-[235px] relative  bg-white{{/if}} rounded-lg">
+    {{#if errors.size}}<div class="text-red-600 font-bold flex items-center start-0 ps-2 pointer-events-none bg-white mb-2 absolute z-2">
+      <img src="../../assets/error.svg" class="w-7 h-7">{{errors.size.message}}</div>{{/if}}
+      <div>
+        <fieldset class="mt-2">
+          <legend class="font-bold">Size<span class="text-red-600">*</span></legend>
           <div>
-            <input type="radio" id="small" name="size" value="small">
+            <input type="radio" id="small" name="size" value="small" class="cursor-pointer">
             <label for="small">Small</label>
           </div>
           <div>
-            <input type="radio" id="medium" name="size" value="medium">
+            <input type="radio" id="medium" name="size" value="medium" class="cursor-pointer">
             <label for="medium">Medium</label>
           </div>
           <div>
-            <input type="radio" id="large" name="size" value="large">
+            <input type="radio" id="large" name="size" value="large" class="cursor-pointer">
             <label for="large">Large</label>
           </div>              
           <div>
-            <input type="radio" id="xl" name="size" value="xl">
+            <input type="radio" id="xl" name="size" value="xl" class="cursor-pointer">
             <label for="xl">Extra-large</label>
           </div>
         </fieldset>
       </div>
       
     </div>
-    
 
-
-  <div  class="border border-black md:col-start-3 md:row-start-2 md:row-end-3"> 
-    <label for="weight">Weight</label>
+  <div class="md:col-start-2"> 
+    <label for="weight" class="font-bold">Weight</label>
+        <div class="relative">
+      <div class="absolute inset-y-0 start-0 flex items-center ps-2.5 pointer-events-none">
+      <img src="../../assets/weight.png" alt="" class="w-6 h-6">
+    </div>
     <input name="weight" id="weight" type="Number" placeholder="Weight" value="{{dog.weight}}"
-      class="block border  focus:bg-green-400 focus:placeholder:text-white focus:text-white {{#if errors.weight}}border-red-600 border-2 placeholder-shown:bg-red-400 {{/if}}">
-  </div>
+      class="input-reset focus-input cursor-pointer {{#if errors.weight}}border-red-600 border-2 placeholder-shown:bg-red-400 {{/if}}">
+  </div></div>
 
 
-  <div class="md:col-span-2 flex flex-col justify-center border border-black">
-    <label>Tell me more about our furry friend :</label>
-    <textarea placeholder="Leave a comment..." value="{{dog.about}}"></textarea>
-  </div>
-
-  <div  class="border border-black md:col-start-3 md:row-start-4">
+  <div class="md:col-start-2 md:row-start-7"> 
     <fieldset>
-      <legend>Choose an ideal home?</legend>
+      <legend class="font-bold">Ideal home?</legend>
     
       <div>
-        <input type="radio" id="any" name="idealHome" value="any">
+        <input type="radio" id="any" name="idealHome" value="any" class="cursor-pointer">
         <label for="any">Any Location</label>
       </div>
     
       <div>
-        <input type="radio" id="away" name="idealHome" value="away">
+        <input type="radio" id="away" name="idealHome" value="away" class="cursor-pointer">
         <label for="away">Away From Inner City</label>
       </div>
 
@@ -127,7 +133,24 @@
   </div> 
 
 
-  <button type="submit"  class="max-w-40 max-h-18 py-4 px-2 border border-black rounded-lg bg-accent-color md:col-span-3">Submit</button>
+  <div class="w-[235px] flex flex-col md:col-start-1 md:w-auto md:col-end-3 md:row-start-8 md:row-end-10">
+    <label class="font-bold">More about :</label>
+    <textarea placeholder="Tell me more about our furry friend..." class="cursor-pointer border rounded-lg p-2 min-h-28 focus:h-[400px] focus:w-[300px] md:focus:w-auto md:focus:h-auto">{{dog.about}}</textarea>
+  </div>
+
+  <div class="w-[235px]  {{#if errors.image}}border-red-600 bg-white relative border-4{{/if}}flex flex-col p-2 pb-0 border rounded-lg md:col-start-1 md:row-start-2 md:row-end-8 md:w-auto">
+    {{#if errors.image}}<p class="absolute z-2 text-red-600 bg-white font-bold flex items-center mx-auto p-2 pointer-events-none mb-2"><img src="../../assets/error.svg" class="w-7 h-7">{{errors.image.message}}</p>{{/if}}
+
+    <label for="image-input" class="font-bold">Add a photo<span class="text-red-600">*</span></label>
+    <img id="image" src={{#if errors.image}}"../../assets/imageError.svg"{{/if}}"../../assets/image.svg" width="200" alt="Image preview" class="mx-auto md:h-3/4 md:w-auto md:max-h-[600px] aspect-square object-cover"/>
+    <input id="image-input" name="image" onchange="readURL(this)" accept="image/*" type="file" class="border-t pt-2 mb-2"/>
+  </div>
+
+<div class="w-[235px] flex flex-col items-center md:col-start-2 md:w-full">
+    <button type="submit" class="w-full py-4 px-16 mx-auto border rounded-lg bg-accent-color">Submit</button>
+    <a href="/dogs" class="underline text-center py-2">Cancel</a>
+</div>
+
 </form>
 </div>
 </section>
