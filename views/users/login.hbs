@@ -1,6 +1,23 @@
-<a href="/users/create">New</a>
+<main>
 
-  <form method="post" action="/users">
+<div>
+  <a href="/users/create">New</a>
+</div>
+
+{{#if errors}} <div class=" text-center border-t-2 border-b-2 p-4 bg-white font-extrabold border-red-600">Please review form data</div>{{/if}} 
+
+{{#if errors}}
+  <ul>
+    {{#each errors}}
+      <li>{{this}}</li>
+    {{/each}}
+  </ul>
+{{/if}}
+
+
+<div class="flex">
+  <div></div>
+  <form method="post" action="/users" class=" mx-auto py-16 px-6 flex flex-col gap-4 justify-center">
     <div>
       {{#if errors.email}}
       <div>
@@ -8,7 +25,7 @@
       </div>
       {{/if}}
       <input name="email" type="email" placeholder="email" value="{{user.email}}"
-        class="{{#if errors.email}}border-red-600 border-4{{/if}} border-2 m-1 p-1">
+        class="cursor-pointer block border-b outline-none p-2  border-black focus:placeholder:text-black focus:font-bold focus:text-black focus:border-2 focus:rounded-lg focus:transition-all {{#if errors.email}}border-red-600 border-4{{/if}}">
     </div>
   
     <div>
@@ -18,15 +35,21 @@
       </div>
       {{/if}}
       <input name="password" type="password" placeholder="password"
-        class="{{#if errors.password}}border-red-600 border-4{{/if}} border-2 m-1 p-1">
+        class="cursor-pointer block border-b outline-none p-2  border-black focus:placeholder:text-black focus:font-bold focus:text-black focus:border-2 focus:rounded-lg focus:transition-all {{#if errors.password}}border-red-600 border-4{{/if}}">
     </div>
   
-    <button type="submit">Submit</button>
+    <button type="submit" class="bg-white text-black text-center p-4 rounded-3xl border border-black flex items-center justify-center gap-2
+    hover:bg-black hover:text-white hover:border-black transition-colors group">Submit</button>
+    <p class="mt-6 text-center">Don't have an account?<a href="/users" class="text-green-600 text-lg inline-block ml-2 underline">Create</a></p>
+    
   </form>
+
+</div>
   
+    
   <h2>{{#each users as |user|}}
     <a href="/users/{{user.id}}">{{user.name}}</a>
     {{/each}}
   </h2>
 
-
+  </main>

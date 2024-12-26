@@ -1,52 +1,41 @@
 <main class="w-[90%] h-full grid max-w-screen-xl mx-auto md:grid-cols-[2fr_3fr] lg:grid-cols-2">
 
-  <div class="bg-bg-topo-image bg-cover b-center hidden md:block">
-
-  </div>
+  <div class="bg-bg-topo-image bg-cover b-center hidden md:block"></div>
 
   <section>
-
-  {{#if errors}}
-<div> Review form data 
-</div>  
-  {{/if}}
 
 <form class="h-full max-w-md mx-auto py-16 px-6 flex flex-col gap-4 justify-center"method="post" action="/users/create">
 
 <article class="space-y-4 mb-8">
-  <h2 class="text-3xl font-medium">Create an account</h2>
+  <h2 class="text-3xl text-center font-medium">Registration form</h2>
 </article>
 
+
   <div class="grid">
-  {{#if errors.name}}
-    <div class="text-red-600">
-      {{errors.name}}
-    </div>
-  {{/if}}
-  <input name="name" placeholder="Name" value="{{user.name}}" class="block input-reset .focus-input focus:placeholder:text-black focus:text-black {{#if errors.name}}border-red-600 border-2 placeholder-shown:bg-red-400 {{/if}}">
+
+  <label for="name" class="font-bold">Name</label>
+  <input name="name" value="{{user.name}}" class="cursor-pointer block border-b outline-none p-2 hover:border-b-green-600 hover:border-b-2 border-black focus:placeholder:text-black focus:font-bold focus:text-black focus:border-2 focus:rounded-lg focus:transition-all{{#if errors.name}}border-red-600 border-2 rounded-lg bg-red-300 {{/if}}">
+  {{#if errors.name}}<div class="text-red-600 font-medium">{{errors.name}}</div>{{/if}}
   </div>
 
   <div class="grid">
-    {{#if errors.email}}
-      <div class="text-red-600">
-        {{errors.email}}
-      </div>
-    {{/if}}
-    <input name="email" type="mail" placeholder="Email" value="{{user.email}}" class="input-reset block {{#if errors.email}}border-red-600 border-2{{/if}}">  
+    
+    
+    <label for="email" class="font-bold">Email</label>
+    <input name="email" type="mail" value="{{user.email}}" class="cursor-pointer block border-b outline-none p-2 hover:border-b-green-600 hover:border-b-2 border-black focus:placeholder:text-black focus:font-bold focus:text-black focus:border-2 focus:rounded-lg focus:transition-all{{#if errors.email}}border-red-600 rounded-lg bg-red-300 border-2{{/if}}">  
+    {{#if errors.email}}<div class="text-red-600 font-medium">{{errors.email}}</div>{{/if}}
   </div>
   
   <div class="grid">
-    {{#if errors.password}}
-    <div class="text-red-600">
-      {{errors.password}}
-    </div>
-    {{/if}}
-    <input name="password" type="password" placeholder="Password" class="input-reset block {{#if errors.password}}border-red-600 border-2{{/if}}">
+
+    <label for="password" class="font-bold">Password</label>
+    <input name="password" type="password" class="cursor-pointer block border-b outline-none p-2 hover:border-b-black hover:border-b-2 border-black focus:placeholder:text-black focus:font-bold focus:text-black focus:border-2 focus:rounded-lg focus:transition-all{{#if errors.password}}border-red-600 bg-red-300 rounded-lg border-2{{/if}}">
+    {{#if errors.password}}<div class="text-red-600 font-medium">{{errors.password}}</div>{{/if}}
   </div>
 
   <article class="grid gap-6 mt-8">
     <button type="submit" class="bg-black text-white text-center p-4 rounded-3xl border
-    hover:bg-white hover:text-black hover:border-black transition-colors">Create Account</button>
+    hover:bg-white hover:text-black hover:border-black hover:border-2 transition-colors">Create Account</button>
 
     <button type="submit" class="bg-white text-black text-center p-4 rounded-3xl border border-black flex items-center justify-center gap-2
     hover:bg-black hover:text-white hover:border-black transition-colors group">
@@ -57,7 +46,7 @@
       </button>
   </article>
 
-    <p class="mt-6 text-center">Already have an account?<a href="/users" class="text-green-600 text-lg inline-block ml-2">Sign in</a></p>
+    <p class="mt-6 text-center">Already have an account?<a href="/users" class="text-green-600 text-lg inline-block ml-2 underline">Sign in</a></p>
     
   
 </form>

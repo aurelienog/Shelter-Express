@@ -13,25 +13,42 @@ module.exports.login = (req, res, next) => {
 };
 
 module.exports.doLogin = (req, res, next) => {
-  
+
+  function renderWithErrors(errors) {
+    const formattedErrors = {};
+      for(const key in errors) {
+        formattedErrors[key] = errors[key];
+      }
+    res.render('users/login', { errors: formattedErrors, user: req.body })
+  };
+
+
   User.findOne({email : req.body.email})
     .then((user) => {
-      bcrypt
-        .compare(req.body.password, user.password)
-        .then((ok) => {
-          if (ok) {
-            req.session.userId = user.id;           
-            res.redirect("/");
-          } 
-      })
-      .catch(next)
-    .catch(next);
-    
+      if (user) { 
+        return bcrypt
+          .compare(req.body.password, user.password)
+            .then((ok) => {
+              if (ok) {
+              req.session.userId = user.id;           
+              res.redirect("/");
+              } else {
+                renderWithErrors({ password: 'Password incorrect'});
+              }
+            });
+      } else { 
+        renderWithErrors({ email: 'User does not exist'}) 
+      }    
+    })  
+    .catch((error) => {
+      console.error(error.errors)
+      if (error instanceof mongoose.Error.ValidationError) {
+        renderWithErrors(error.errors);  
+      } else {
+        next(error);
+      }
     })
-    .catch((err) => {
-      next(err);
-    });
-};
+  };
 
 module.exports.create = (req, res, next) => {
   res.render('./users/create')
@@ -39,17 +56,16 @@ module.exports.create = (req, res, next) => {
 
 module.exports.doCreate = (req, res, next) => {
 
-  delete req.body.role;
-
   function renderWithErrors(errors) {
-    res.render('users/new', { errors, user: req.body })
-  };
+    res.render('./users/create', { errors, user: req.body });
+  }
 
+  delete req.body.role;
 
   User.findOne({ email: req.body.email })
     .then(user => {
       if (user) { 
-        renderWithErrors({ email: 'email already registered'});
+        renderWithErrors({ email: 'email already registered'})
       } else { 
         return User.create(req.body)
           .then(() => res.redirect('/'))
@@ -57,7 +73,7 @@ module.exports.doCreate = (req, res, next) => {
     })
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
-        renderWithErrors(error.errors); 
+        renderWithErrors(error.errors)
       } else {
         next(error);
       }

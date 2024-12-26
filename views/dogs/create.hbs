@@ -6,7 +6,6 @@
 
 {{#if errors}} <div class=" text-center border-t-2 border-b-2 p-4 bg-white font-extrabold border-red-600">Please review form data</div>{{/if}} 
 
-
 <form class="w-[45%] mx-auto mt-8 text-black gap-6 rounded-lg flex flex-col p-2 md:border-2 md:border-white md:space-y-0 md:p-10 md:grid md:grid-cols-2 md:w-4/5 md:gap-x-20 md:gap-y-4" method="post" action="/dogs/create" enctype="multipart/form-data">
   
   <div class="md:col-start-1 md:row-start-1">
@@ -141,15 +140,16 @@
   <div class="w-[235px]  {{#if errors.image}}border-red-600 bg-white relative border-4{{/if}}flex flex-col p-2 pb-0 border rounded-lg md:col-start-1 md:row-start-2 md:row-end-8 md:w-auto">
     {{#if errors.image}}<p class="absolute z-2 text-red-600 bg-white font-bold flex items-center mx-auto p-2 pointer-events-none mb-2"><img src="../../assets/error.svg" class="w-7 h-7">{{errors.image.message}}</p>{{/if}}
 
-    <label for="image-input" class="font-bold">Add a photo<span class="text-red-600">*</span></label>
+    <label for="image-input" class="cursor-pointer font-bold mx-auto h-full pt-8 ">Add a photo<span class="text-red-600">*</span>
     <img id="image" src={{#if errors.image}}"../../assets/imageError.svg"{{/if}}"../../assets/image.svg" width="200" alt="Image preview" class="mx-auto md:h-3/4 md:w-auto md:max-h-[600px] aspect-square object-cover"/>
-    <input id="image-input" name="image" onchange="readURL(this)" accept="image/*" type="file" class="border-t pt-2 mb-2"/>
+    </label>
+    
+    <input id="image-input" name="image" onchange="readURL(this)" accept="image/*" type="file" class="border-t pt-2 mb-2 opacity-0"/>
   </div>
 
-<div class="w-[235px] flex flex-col items-center md:col-start-2 md:w-full">
-    <button type="submit" class="w-full py-4 px-16 mx-auto border rounded-lg bg-accent-color">Submit</button>
-    <a href="/dogs" class="underline text-center py-2">Cancel</a>
-</div>
+    <button type="submit" class="w-[235px] md:w-full py-4 px-16 border rounded-lg md:col-start-2 bg-accent-color">Submit</button>
+
+    <a href="/dogs" class="underline text-center py-4 w-[235px] md:w-full md:col-start-1 md:row-start-10">Cancel</a>
 
 </form>
 </div>

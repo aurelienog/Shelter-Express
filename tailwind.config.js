@@ -17,7 +17,8 @@ module.exports = {
           "open-menu": "url('../assets/bg-open-menu.png')",
           "close-menu": "url('../assets/bg-close-menu.svg')",
           "bg-topo-image": "url('../assets/topo.jpeg')",
-          "dog-shape": "url('../assets/dog-shape.jpg')",
+          "hero": "url('../assets/hero.jpg')",
+          "dog-shape": "url('../assets/dog-shape.jpg')"
         }
     },
   },
