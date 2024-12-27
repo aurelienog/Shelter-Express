@@ -32,3 +32,7 @@ hbs.registerHelper('isAdmin', (user, options) => {
     return options.inverse();
   }
 });
+
+hbs.registerHelper('isSelected', (value, queryValue) => {
+  return value === queryValue ? 'checked' : '';
+});

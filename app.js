@@ -22,6 +22,7 @@ app.use(loadSessionUser);
 
 app.use((req, res, next) => {
   res.locals.currentPath = req.path;
+  res.locals.query = req.query;
   next();
 });
 

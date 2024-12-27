@@ -2,11 +2,25 @@ const mongoose = require('mongoose');
 const Dog = require('../models/dog.model');
 const User = require('../models/user.model');
 const { doLogin } = require('./auth.controller');
+const { query } = require('express');
 
 module.exports.list = (req, res, next) => {
-  Dog.find()
+const criterial = {};
+
+if(req.query.sex) {
+  criterial.sex = req.query.sex;
+}
+
+if(req.query.size) {
+  criterial.size = req.query.size;
+}
+
+
+
+  Dog.find(criterial)
     .then((dogs) => {
-      res.render('./dogs/list', { dogs : dogs });
+      console.log(criterial)
+      res.render('./dogs/list', { dogs : dogs, query: req.query });
     })
     .catch(next)
 }

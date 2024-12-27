@@ -1,6 +1,91 @@
-<section class="w-[90%] mx-auto">
+<aside class="bg-red-400 fixed left-0 z-40 w-64 h-screen " aria-label="Sidebar">
+  <div class="px-4">
+    <h2 class="my-20">Sort & Filter</h2>
+      <form action="/dogs" method="get">
+        <fieldset class="my-6">
+              <legend class="font-bold">Sort By</legend>
+                <div>
+                  <input type="radio" id="weight" name="SortBy" value="weightAsc" class="cursor-pointer">
+                  <label for="weight">Weight</label>
+                </div>
 
-  <div class="py-16 text-center">
+                <div>
+                  <input type="radio" id="age" name="SortBy" value="ageAsc" class="cursor-pointer">
+                  <label for="age">Age</label>
+                </div>
+            </fieldset>
+
+
+        <ul class="space-y-2 font-medium">
+          
+          <li>
+            <fieldset class="mt-2">
+              <legend class="font-bold">Sex</legend>
+      
+                <div>
+                  <input type="radio" id="male" name="sex" value="male" class="cursor-pointer" {{isSelected "male" query.sex}}>
+                  <label for="male">Male</label>
+                </div>
+
+                <div>
+                  <input type="radio" id="female" name="sex" value="female" class="cursor-pointer" {{isSelected "female" query.sex}}>
+                  <label for="female">Female</label>
+                </div>
+            </fieldset>
+          </li>
+
+          <li>
+                         <fieldset class="mt-2">
+          <legend class="font-bold">Size</legend>
+          <div>
+            <input type="radio" id="small" name="size" value="small" class="cursor-pointer" {{isSelected "small" query.size}}>
+            <label for="small">Small</label>
+          </div>
+          <div>
+            <input type="radio" id="medium" name="size" value="medium" class="cursor-pointer" {{isSelected "medium" query.size}}>
+            <label for="medium">Medium</label>
+          </div>
+          <div>
+            <input type="radio" id="large" name="size" value="large" class="cursor-pointer" {{isSelected "large" query.size}}>
+            <label for="large">Large</label>
+          </div>              
+          <div>
+            <input type="radio" id="xl" name="size" value="xl" class="cursor-pointer" {{isSelected "xl" query.size}}>
+            <label for="xl">Extra-large</label>
+          </div>
+        </fieldset>
+          </li>
+
+          <li>          
+            <div class="relative mb-6 ">
+              <h4>Age (years)</h4>
+              <label for="labels-range-input" class="sr-only">Labels range</label>
+              <input id="labels-range-input" type="range" value="4" min="1" max="15" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
+              <span class="text-sm absolute start-0 -bottom-6">1</span>
+              <span class="text-sm  absolute start-1/3 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">5</span>
+              <span class="text-sm absolute start-2/3 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">10</span>
+              <span class="text-sm absolute end-0 -bottom-6">15</span>
+            </div></li>
+
+          <li>Licence</li>
+          <li>Home</li>
+          <li>Living with children</li>
+          <li>Living with dogs</li>
+          <li>Living with cats</li>
+        </ul>
+
+        <button type="submit">Search</button>
+
+        <a href="/dogs">Reset</a>
+
+
+      </form>
+  </div>
+</aside>
+
+<main>
+
+  <div class=" py-16 text-center">
 
     <h2 class="text-3xl md:text-5xl">Our compagnons</h2>
 
@@ -25,10 +110,10 @@
     </div>
 
 
-    <div class="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] justify-items-center auto-rows-fr gap-8 mx-auto ">
+    <div class="md:px-20 md:py-40  bg-red-300/70 bg-bg-icons grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] justify-items-center auto-rows-fr gap-8 mx-auto ">
   
 {{#each dogs as |dog|}}
-  <article class=" grid justify-items-center border rounded-lg p-8 cursor-pointer shadow-black shadow-md">
+  <article class=" bg-red-400/90 grid justify-items-center border rounded-lg p-8 cursor-pointer shadow-black shadow-md">
     <h3 class="text-xl mt-4 mb-2 uppercase ">{{dog.name}}</h3>
     <img class="w-[90%] aspect-square rounded-full max-w-sm mx-auto md:lg:rounded-none" src="{{dog.image}}">
     <h4 class="mt-4 mb-2 uppercase">{{dog.sex}} <br> {{dog.age}} years old</h4>
@@ -38,7 +123,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 aspect-square fill-green-600">
     <path d="M11.001 10h2v5h-2zM11 16h2v2h-2z"></path><path d="M13.768 4.2C13.42 3.545 12.742 3.138 12 3.138s-1.42.407-1.768 1.063L2.894 18.064a1.986 1.986 0 0 0 .054 1.968A1.984 1.984 0 0 0 4.661 21h14.678c.708 0 1.349-.362 1.714-.968a1.989 1.989 0 0 0 .054-1.968L13.768 4.2zM4.661 19 12 5.137 19.344 19H4.661z"></path>
       </svg>
-      <p class="leading-normal text-gray-600 underline decoration-2">Need a licence</p>
+      <p class="leading-normal text-gray-600">Need a licence</p>
     </div>   
     {{/if}}
 
@@ -50,4 +135,5 @@
 </div>
 
   </div>
-</section>
+
+</main>

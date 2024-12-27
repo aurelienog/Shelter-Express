@@ -1,55 +1,40 @@
 <main>
 
-<div>
-  <a href="/users/create">New</a>
-</div>
-
-{{#if errors}} <div class=" text-center border-t-2 border-b-2 p-4 bg-white font-extrabold border-red-600">Please review form data</div>{{/if}} 
-
-{{#if errors}}
-  <ul>
-    {{#each errors}}
-      <li>{{this}}</li>
-    {{/each}}
-  </ul>
-{{/if}}
+  {{#if errors}} <div class=" text-center mt-10 border-t-2 border-b-2 p-4 bg-white font-extrabold border-red-600">Please review form data</div>{{/if}} 
 
 
-<div class="flex">
-  <div></div>
-  <form method="post" action="/users" class=" mx-auto py-16 px-6 flex flex-col gap-4 justify-center">
+  <div class="flex">
     <div>
-      {{#if errors.email}}
-      <div>
-        {{errors.email.message}}
-      </div>
-      {{/if}}
-      <input name="email" type="email" placeholder="email" value="{{user.email}}"
-        class="cursor-pointer block border-b outline-none p-2  border-black focus:placeholder:text-black focus:font-bold focus:text-black focus:border-2 focus:rounded-lg focus:transition-all {{#if errors.email}}border-red-600 border-4{{/if}}">
-    </div>
-  
-    <div>
-      {{#if errors.password}}
-      <div>
-        {{errors.password.message}}
-      </div>
-      {{/if}}
-      <input name="password" type="password" placeholder="password"
-        class="cursor-pointer block border-b outline-none p-2  border-black focus:placeholder:text-black focus:font-bold focus:text-black focus:border-2 focus:rounded-lg focus:transition-all {{#if errors.password}}border-red-600 border-4{{/if}}">
-    </div>
-  
-    <button type="submit" class="bg-white text-black text-center p-4 rounded-3xl border border-black flex items-center justify-center gap-2
-    hover:bg-black hover:text-white hover:border-black transition-colors group">Submit</button>
-    <p class="mt-6 text-center">Don't have an account?<a href="/users" class="text-green-600 text-lg inline-block ml-2 underline">Create</a></p>
-    
-  </form>
 
-</div>
-  
+    </div>
     
-  <h2>{{#each users as |user|}}
-    <a href="/users/{{user.id}}">{{user.name}}</a>
-    {{/each}}
-  </h2>
+    <form method="post" action="/users" class=" mx-auto py-16 px-6 flex flex-col gap-4 justify-center">
 
-  </main>
+  <article class="space-y-4 mb-8">
+    <h2 class="text-3xl text-center font-medium">Login form</h2>
+  </article>
+
+
+      <div class="grid">
+        <label for="email" class="font-bold">Email</label>
+        <input name="email" type="email" value="{{user.email}}"
+          class="cursor-pointer block border-b outline-none p-2 hover:border-b-green-600 hover:border-b-2 border-black focus:placeholder:text-black focus:font-bold focus:text-black focus:border-2 focus:rounded-lg focus:transition-all{{#if errors.email}}border-red-600 border-2 rounded-lg bg-red-300 {{/if}}">
+        {{#if errors.email}}<div class="text-red-600">{{errors.email}}</div>{{/if}}
+      </div>
+    
+      <div class="grid">
+        <label for="password" class="font-bold">Password</label>
+        <input name="password" type="password" 
+        class="cursor-pointer block border-b outline-none p-2 hover:border-b-black hover:border-b-2 border-black focus:placeholder:text-black focus:font-bold focus:text-black focus:border-2 focus:rounded-lg focus:transition-all{{#if errors.password}}border-red-600 bg-red-300 rounded-lg border-2{{/if}}">
+        {{#if errors.password}}<div class="text-red-600">{{errors.password}}</div>{{/if}}
+      </div>
+    
+      <button type="submit" class="bg-white text-black text-center p-4 rounded-3xl border border-black flex items-center justify-center gap-2
+      hover:bg-black hover:text-white hover:border-black transition-colors group">Submit</button>
+      <p class="mt-6 text-center">Don't have an account?<a href="/users/create" class="text-green-600 text-lg inline-block ml-2 underline">Create</a></p>
+      
+    </form>
+
+  </div>
+    
+</main>

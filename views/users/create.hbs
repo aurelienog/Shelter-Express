@@ -19,8 +19,6 @@
   </div>
 
   <div class="grid">
-    
-    
     <label for="email" class="font-bold">Email</label>
     <input name="email" type="mail" value="{{user.email}}" class="cursor-pointer block border-b outline-none p-2 hover:border-b-green-600 hover:border-b-2 border-black focus:placeholder:text-black focus:font-bold focus:text-black focus:border-2 focus:rounded-lg focus:transition-all{{#if errors.email}}border-red-600 rounded-lg bg-red-300 border-2{{/if}}">  
     {{#if errors.email}}<div class="text-red-600 font-medium">{{errors.email}}</div>{{/if}}
