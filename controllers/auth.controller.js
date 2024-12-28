@@ -68,7 +68,11 @@ module.exports.doCreate = (req, res, next) => {
         renderWithErrors({ email: 'email already registered'})
       } else { 
         return User.create(req.body)
-          .then(() => res.redirect('/'))
+          .then((user) => {
+            req.session.userId = user.id;          
+            res.redirect('/')
+          })
+            
       }
     })
     .catch((error) => {

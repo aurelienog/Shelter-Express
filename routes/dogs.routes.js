@@ -11,8 +11,8 @@ routes.post("/dogs/create", secure.isAuthenticated, secure.checkRole('admin'), (
     console.log('Solicitud recibida:', 'body', req.body, 'file', req.file);
     next();
 }, storage.single('image'), dogs.doCreate);
-routes.get("/dogs/:id/update", dogs.update);
-routes.post("/dogs/:id/update", dogs.doUpdate);
+routes.get("/dogs/:id/update", secure.isAuthenticated, secure.checkRole('admin'), dogs.update);
+routes.post("/dogs/:id/update", secure.isAuthenticated, secure.checkRole('admin'), dogs.doUpdate);
 routes.get("/dogs/:id", dogs.detail);
 routes.post("/dogs/:id/delete", secure.isAuthenticated, secure.checkRole('admin'), dogs.delete);
 

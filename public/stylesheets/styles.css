@@ -634,10 +634,6 @@ h1, h2, h3, h4, h5, h6 {
   inset-inline-end: 0px;
 }
 
-.left-0 {
-  left: 0px;
-}
-
 .start-0 {
   inset-inline-start: 0px;
 }
@@ -662,6 +658,10 @@ h1, h2, h3, h4, h5, h6 {
   grid-column-start: 2;
 }
 
+.m-2 {
+  margin: 0.5rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -670,11 +670,6 @@ h1, h2, h3, h4, h5, h6 {
 .my-10 {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
-}
-
-.my-20 {
-  margin-top: 5rem;
-  margin-bottom: 5rem;
 }
 
 .my-6 {
@@ -697,10 +692,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .mb-14 {
   margin-bottom: 3.5rem;
-}
-
-.mb-16 {
-  margin-bottom: 4rem;
 }
 
 .mb-2 {
@@ -967,6 +958,10 @@ h1, h2, h3, h4, h5, h6 {
   gap: 0.5rem;
 }
 
+.gap-24 {
+  gap: 6rem;
+}
+
 .gap-4 {
   gap: 1rem;
 }
@@ -995,16 +990,16 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
-.space-y-2 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
-}
-
 .space-y-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+}
+
+.space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
 }
 
 .scroll-smooth {
@@ -1073,6 +1068,11 @@ h1, h2, h3, h4, h5, h6 {
 .border-red-600 {
   --tw-border-opacity: 1;
   border-color: rgb(220 38 38 / var(--tw-border-opacity, 1));
+}
+
+.border-white {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
 }
 
 .border-b-green-700 {
@@ -1649,10 +1649,6 @@ h1, h2, h3, h4, h5, h6 {
     grid-column-start: 2;
   }
 
-  .md\:col-end-3 {
-    grid-column-end: 3;
-  }
-
   .md\:col-end-2 {
     grid-column-end: 2;
   }
@@ -1663,6 +1659,10 @@ h1, h2, h3, h4, h5, h6 {
 
   .md\:row-start-10 {
     grid-row-start: 10;
+  }
+
+  .md\:row-start-11 {
+    grid-row-start: 11;
   }
 
   .md\:row-start-2 {
@@ -1681,20 +1681,12 @@ h1, h2, h3, h4, h5, h6 {
     grid-row-start: 9;
   }
 
-  .md\:row-start-11 {
-    grid-row-start: 11;
-  }
-
-  .md\:row-end-10 {
-    grid-row-end: 10;
+  .md\:row-end-11 {
+    grid-row-end: 11;
   }
 
   .md\:row-end-8 {
     grid-row-end: 8;
-  }
-
-  .md\:row-end-11 {
-    grid-row-end: 11;
   }
 
   .md\:mx-auto {
@@ -1712,6 +1704,10 @@ h1, h2, h3, h4, h5, h6 {
 
   .md\:block {
     display: block;
+  }
+
+  .md\:flex {
+    display: flex;
   }
 
   .md\:grid {
@@ -1736,10 +1732,6 @@ h1, h2, h3, h4, h5, h6 {
 
   .md\:h-full {
     height: 100%;
-  }
-
-  .md\:h-4\/5 {
-    height: 80%;
   }
 
   .md\:max-h-\[600px\] {
@@ -1814,14 +1806,14 @@ h1, h2, h3, h4, h5, h6 {
     padding: 2.5rem;
   }
 
-  .md\:px-20 {
-    padding-left: 5rem;
-    padding-right: 5rem;
+  .md\:px-10 {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
   }
 
-  .md\:py-40 {
-    padding-top: 10rem;
-    padding-bottom: 10rem;
+  .md\:py-10 {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
   }
 
   .md\:py-7 {
@@ -1841,10 +1833,6 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
   }
 
-  .md\:text-start {
-    text-align: start;
-  }
-
   .md\:text-3xl {
     font-size: 1.875rem;
     line-height: 2.25rem;
@@ -1862,10 +1850,6 @@ h1, h2, h3, h4, h5, h6 {
 
   .md\:clip-circle-full{
     clip-path: circle(150% at top right);
-  }
-
-  .md\:focus\:h-auto:focus {
-    height: auto;
   }
 
   .md\:focus\:h-full:focus {

@@ -34,10 +34,9 @@ app.use("/", usersRoutes);
 const dogsRoutes = require('./routes/dogs.routes');
 app.use(dogsRoutes);
 
-/*
 const catsRoutes = require('./routes/cats.routes')
 app.use(catsRoutes);
-*/
+
 
 app.use((req, res, next) => {
   next(createError(404, 'Page not found'))

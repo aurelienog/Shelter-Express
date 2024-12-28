@@ -1,0 +1,183 @@
+<section class="bg-dog-shape bg-cover bg-no-repeat bg-top min-w-fit">
+
+  <div class="bg-red-400/55 my-10 md:pb-20">
+
+  <h1 class="mb-20 underline text-center text-3xl md:text-5xl md:mb-10">Register a new cat</h1>
+
+{{#if errors}} <div class=" text-center border-t-2 border-b-2 p-4 bg-white font-extrabold border-red-600">Please review form data</div>{{/if}} 
+
+<form class="w-[45%] mx-auto mt-8 text-black gap-6 rounded-lg flex flex-col p-2 md:border-2 md:border-white md:space-y-0 md:p-10 md:grid md:grid-cols-2 md:w-4/5 md:gap-x-20 md:gap-y-4" method="post" action="/cats" enctype="multipart/form-data">
+  
+  <div class="md:col-start-1 md:row-start-1">
+
+    <label for="name" class="font-bold">Name<span class="text-red-600">*</span></label>
+    
+    <div class="relative">
+      <div class="absolute inset-y-0 start-0 flex items-center ps-2.5 pointer-events-none">
+      <img src={{#if errors.name}}"../../assets/error.svg"{{/if}}"../../assets/id.svg" alt="" class="w-7 h-7 md:w-14 md:h-14">
+    </div>
+    <input name="name" id="name" value="{{cat.name}}" class="cursor-pointer{{#if errors.name}}border-red-600 border-4 py-4 placeholder:text-red-600 placeholder:font-bold {{/if}} input-reset focus-input md:w-full md:py-7 md:ps-20 md:text-4xl" {{#if errors.name}}placeholder="{{errors.name.message}}"{{/if}}>
+  </div>
+  </div>
+
+  <div class="{{#if errors.sex}}border-red-600 border-4 px-4 py-2 w-[235px] relative  bg-white{{/if}} rounded-lg">
+    {{#if errors.sex}}<div class="text-red-600 font-bold flex items-center start-0 ps-2 pointer-events-none bg-white mb-2 absolute z-2">
+      <img src="../../assets/error.svg" class="w-7 h-7">{{errors.sex.message}}</div>{{/if}}
+  
+    <fieldset class="mt-2">
+      <legend class="font-bold">Sex<span class="text-red-600">*</span></legend>
+    
+      <div>
+        <input type="radio" id="male" name="sex" value="male" class="cursor-pointer">
+        <label for="male">Male</label>
+      </div>
+    
+      <div>
+        <input type="radio" id="female" name="sex" value="female" class="cursor-pointer">
+        <label for="female">Female</label>
+      </div>
+    </fieldset>
+  </div>
+
+  <div>
+    <label for="age" class="font-bold">Age<span class="text-red-600">*</span></label>
+        <div class="relative">
+      <div class="absolute inset-y-0 start-0 flex items-center ps-2.5 pointer-events-none">
+      <img src={{#if errors.age}}"../../assets/error.svg"{{/if}}"../../assets/age.svg" alt="" class="w-7 h-7">
+    </div>
+    <input name="age" id="age" value="{{cat.age}}" type="number"
+      class="cursor-pointer {{#if errors.age}}border-red-600 border-4 py-4 placeholder:text-red-600 placeholder:font-bold {{/if}} input-reset focus-input" {{#if errors.age}}placeholder="{{errors.age.message}}"{{/if}} >
+  </div>
+  </div>
+  
+  <div>
+    <label for="breed" class="font-bold">Breed</label>
+        <div class="relative">
+      <div class="absolute inset-y-0 start-0 flex items-center ps-2.5 pointer-events-none">
+      <img src="../../assets/dog.svg" alt="" class="w-7 h-7">
+    </div>
+    <input name="breed" id="breed" value="{{cat.breed}}" class="input-reset focus-input cursor-pointer">
+  </div></div>
+  
+
+  <div class="md:col-start-2 md:row-start-7"> 
+    <fieldset>
+      <legend class="font-bold">Ideal home?</legend>
+    
+      <div>
+        <input type="radio" id="any" name="idealHome" value="any" class="cursor-pointer">
+        <label for="any">Any Location</label>
+      </div>
+    
+      <div>
+        <input type="radio" id="away" name="idealHome" value="away" class="cursor-pointer">
+        <label for="away">Away From Inner City</label>
+      </div>
+
+    </fieldset>
+  </div> 
+
+  <div class="md:col-start-2 md:row-start-8"> 
+    <fieldset>
+      <legend class="font-bold">Living with children</legend>
+    
+      <div>
+        <input type="radio" id="yes" name="livingWithChildren" value="yes" class="cursor-pointer">
+        <label for="yes">Yes</label>
+      </div>
+    
+      <div>
+        <input type="radio" id="no" name="livingWithChildren" value="no" class="cursor-pointer">
+        <label for="no">No</label>
+      </div>
+
+    </fieldset>
+  </div> 
+
+    <div class="md:col-start-2 md:row-start-9"> 
+    <fieldset>
+      <legend class="font-bold">Living with Dogs</legend>
+    
+      <div>
+        <input type="radio" id="yes" name="livingWithDogs" value="yes" class="cursor-pointer">
+        <label for="yes">Yes</label>
+      </div>
+    
+      <div>
+        <input type="radio" id="no" name="livingWithDogs" value="no" class="cursor-pointer">
+        <label for="no">No</label>
+      </div>
+
+    </fieldset>
+  </div> 
+
+  <div class="md:col-start-2 md:row-start-10"> 
+    <fieldset>
+      <legend class="font-bold">Living with cats</legend>
+    
+      <div>
+        <input type="radio" id="yes" name="livingWithCats" value="yes" class="cursor-pointer">
+        <label for="yes">Yes</label>
+      </div>
+    
+      <div>
+        <input type="radio" id="no" name="livingWithCats" value="no" class="cursor-pointer">
+        <label for="no">No</label>
+      </div>
+
+    </fieldset>
+  </div> 
+
+  <div class="w-[235px] flex flex-col md:col-start-1 md:col-end-2 md:w-auto md:row-start-8 md:row-end-11">
+    <label class="font-bold">More about :</label>
+    <textarea placeholder="Tell me more about our furry friend..." class="cursor-pointer border rounded-lg p-2 min-h-28 focus:h-[400px] focus:w-[300px] md:focus:w-auto md:focus:h-full md:h-full">{{cat.about}}</textarea>
+  </div>
+
+  <div class="w-[235px]  {{#if errors.image}}border-red-600 bg-white relative border-4{{/if}}flex flex-col p-2 pb-0 border rounded-lg md:col-start-1 md:row-start-2 md:row-end-8 md:w-auto">
+    {{#if errors.image}}<p class="absolute z-2 text-red-600 bg-white font-bold flex items-center mx-auto p-2 pointer-events-none mb-2"><img src="../../assets/error.svg" class="w-7 h-7">{{errors.image.message}}</p>{{/if}}
+
+    <label for="image-input" class="cursor-pointer font-bold mx-auto h-full pt-8 ">Add a photo<span class="text-red-600">*</span>
+    <img id="image" src={{#if errors.image}}"../../assets/imageError.svg"{{/if}}"../../assets/image.svg" width="200" alt="Image preview" class="mx-auto md:h-3/4 md:w-auto md:max-h-[600px] aspect-square object-cover"/>
+    </label>
+    
+    <input id="image-input" name="image" onchange="readURL(this)" accept="image/*" type="file" class="border-t pt-2 mb-2 opacity-0"/>
+  </div>
+
+    <button type="submit" class="w-[235px] md:w-full py-4 px-16 border rounded-lg md:col-start-2 bg-accent-color">Submit</button>
+
+    <a href="/cats" class="underline text-center py-4 w-[235px] md:w-full md:col-start-1 md:row-start-11">Cancel</a>
+
+</form>
+</div>
+</section>
+
+<script>
+  // Máximo tamaño permitido para el archivo (5MB)
+  const MAX_FILE_SIZE = 10 * 1024 * 1024;
+
+  // Actualiza la imagen en el cliente al seleccionar un archivo
+  document.getElementById("image-input").onchange = (event) => {
+    const file = event.target.files[0]; // Obtén el archivo cargado
+
+    // Validar el tipo de archivo
+    if (!file.type.startsWith("image/")) {
+      alert("Por favor selecciona un archivo de imagen válido.");
+      event.target.value = ""; // Limpia el input si no es válido
+      return;
+    }
+
+    // Validar el tamaño del archivo
+    if (file.size > MAX_FILE_SIZE) {
+      alert("El archivo es demasiado grande. El tamaño máximo permitido es de 5MB.");
+      event.target.value = ""; // Limpia el input si no es válido
+      return;
+    }
+
+    // Usar FileReader para mostrar la vista previa de la imagen
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      document.getElementById("image").src = e.target.result; // Establece la URL de datos como src
+    };
+    reader.readAsDataURL(file); // Convierte el archivo en una URL de datos
+  };
+</script>

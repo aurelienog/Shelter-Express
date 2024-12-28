@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
+
 const schema = new mongoose.Schema({
+  image: { type: String, required: [true, "A photo is required"]},
   name: { type: String, required : true },
   age: { type: Number, required: true },
   breed: { type: String, required: false },
@@ -8,6 +10,7 @@ const schema = new mongoose.Schema({
   livingWithChildren: { type: Boolean, required: false },
   livingWithDogs: { type: Boolean, required: false },
   livingWithCats: { type: Boolean, required: false },
+  about: {type: String, required: false}
 }, { timestamps: true })
 
-module.exports = mongoose.model(Cat, schema)
+module.exports = mongoose.model('Cat', schema)
