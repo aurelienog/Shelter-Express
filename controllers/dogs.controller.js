@@ -15,12 +15,38 @@ if(req.query.size) {
   criterial.size = req.query.size;
 }
 
+if(req.query.maxAge) {
+
+  criterial.age = { $lte: parseInt(req.query.maxAge, 10) }
+}
+
+if(req.query.licence) {
+  criterial.licence = req.query.licence;
+}
+
+if(req.query.idealHome) {
+  criterial.idealHome = req.query.idealHome;
+}
+
+if(req.query.livingWithChildren) {
+  criterial.livingWithChildren = req.query.livingWithChildren;
+}
+
+if(req.query.livingWithDogs) {
+  criterial.livingWithDogs = req.query.livingWithDogs;
+}
+
+
+if(req.query.livingWithCats) {
+  criterial.livingWithCats = req.query.livingWithCats;
+}
+
 
 
   Dog.find(criterial)
     .then((dogs) => {
       console.log(criterial)
-      res.render('./dogs/list', { dogs : dogs, query: req.query });
+      res.render('./dogs/list', { dogs : dogs, query: req.query, maxAge: req.query.maxAge || "15" });
     })
     .catch(next)
 }

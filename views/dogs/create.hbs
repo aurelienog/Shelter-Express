@@ -82,7 +82,7 @@
       <div>
         <fieldset class="mt-2">
           <legend class="font-bold">Size<span class="text-red-600">*</span></legend>
-          <div>
+          <div> 
             <input type="radio" id="small" name="size" value="small" class="cursor-pointer">
             <label for="small">Small</label>
           </div>
@@ -131,10 +131,60 @@
     </fieldset>
   </div> 
 
+  <div class="md:col-start-2 md:row-start-8"> 
+    <fieldset>
+      <legend class="font-bold">Living with children</legend>
+    
+      <div>
+        <input type="radio" id="yes" name="livingWithChildren" value="yes" class="cursor-pointer">
+        <label for="yes">Yes</label>
+      </div>
+    
+      <div>
+        <input type="radio" id="no" name="livingWithChildren" value="no" class="cursor-pointer">
+        <label for="no">No</label>
+      </div>
 
-  <div class="w-[235px] flex flex-col md:col-start-1 md:w-auto md:col-end-3 md:row-start-8 md:row-end-10">
+    </fieldset>
+  </div> 
+
+    <div class="md:col-start-2 md:row-start-9"> 
+    <fieldset>
+      <legend class="font-bold">Living with dogs</legend>
+    
+      <div>
+        <input type="radio" id="yes" name="livingWithDogs" value="yes" class="cursor-pointer">
+        <label for="yes">Yes</label>
+      </div>
+    
+      <div>
+        <input type="radio" id="no" name="livingWithDogs" value="no" class="cursor-pointer">
+        <label for="no">No</label>
+      </div>
+
+    </fieldset>
+  </div> 
+
+  <div class="md:col-start-2 md:row-start-10"> 
+    <fieldset>
+      <legend class="font-bold">Living with cats</legend>
+    
+      <div>
+        <input type="radio" id="yes" name="livingWithCats" value="yes" class="cursor-pointer">
+        <label for="yes">Yes</label>
+      </div>
+    
+      <div>
+        <input type="radio" id="no" name="livingWithCats" value="no" class="cursor-pointer">
+        <label for="no">No</label>
+      </div>
+
+    </fieldset>
+  </div> 
+
+  <div class="w-[235px] flex flex-col md:col-start-1 md:col-end-2 md:w-auto md:row-start-8 md:row-end-11">
     <label class="font-bold">More about :</label>
-    <textarea placeholder="Tell me more about our furry friend..." class="cursor-pointer border rounded-lg p-2 min-h-28 focus:h-[400px] focus:w-[300px] md:focus:w-auto md:focus:h-auto">{{dog.about}}</textarea>
+    <textarea placeholder="Tell me more about our furry friend..." class="cursor-pointer border rounded-lg p-2 min-h-28 focus:h-[400px] focus:w-[300px] md:focus:w-auto md:focus:h-full md:h-full">{{dog.about}}</textarea>
   </div>
 
   <div class="w-[235px]  {{#if errors.image}}border-red-600 bg-white relative border-4{{/if}}flex flex-col p-2 pb-0 border rounded-lg md:col-start-1 md:row-start-2 md:row-end-8 md:w-auto">
@@ -149,7 +199,7 @@
 
     <button type="submit" class="w-[235px] md:w-full py-4 px-16 border rounded-lg md:col-start-2 bg-accent-color">Submit</button>
 
-    <a href="/dogs" class="underline text-center py-4 w-[235px] md:w-full md:col-start-1 md:row-start-10">Cancel</a>
+    <a href="/dogs" class="underline text-center py-4 w-[235px] md:w-full md:col-start-1 md:row-start-11">Cancel</a>
 
 </form>
 </div>

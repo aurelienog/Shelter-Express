@@ -1,6 +1,6 @@
 <aside class="bg-red-400 fixed left-0 z-40 w-64 h-screen " aria-label="Sidebar">
   <div class="px-4">
-    <h2 class="my-20">Sort & Filter</h2>
+    <h2>Sort & Filter</h2>
       <form action="/dogs" method="get">
         <fieldset class="my-6">
               <legend class="font-bold">Sort By</legend>
@@ -35,7 +35,7 @@
           </li>
 
           <li>
-                         <fieldset class="mt-2">
+          <fieldset class="mt-2">
           <legend class="font-bold">Size</legend>
           <div>
             <input type="radio" id="small" name="size" value="small" class="cursor-pointer" {{isSelected "small" query.size}}>
@@ -58,20 +58,94 @@
 
           <li>          
             <div class="relative mb-6 ">
-              <h4>Age (years)</h4>
+              <h4>Max Age</h4>
               <label for="labels-range-input" class="sr-only">Labels range</label>
-              <input id="labels-range-input" type="range" value="4" min="1" max="15" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
+              <input id="labels-range-input" name="maxAge" type="range" value="{{query.maxAge}}" min="1" max="15" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
               <span class="text-sm absolute start-0 -bottom-6">1</span>
               <span class="text-sm  absolute start-1/3 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">5</span>
               <span class="text-sm absolute start-2/3 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">10</span>
               <span class="text-sm absolute end-0 -bottom-6">15</span>
             </div></li>
 
-          <li>Licence</li>
-          <li>Home</li>
-          <li>Living with children</li>
-          <li>Living with dogs</li>
-          <li>Living with cats</li>
+          <li>
+            <fieldset class="mt-2">
+            <legend class="font-bold">Need a licence?</legend>
+            <div>
+              <input type="radio" id="yes" name="licence" value="yes" class="cursor-pointer" {{isSelected "yes" query.licence}}>
+              <label for="yes">Yes</label>
+            </div>
+        
+            <div>
+              <input type="radio" id="no" name="licence" value="no" class="cursor-pointer" {{isSelected "no" query.licence}}>
+              <label for="no">No</label>
+            </div>
+            </fieldset>
+          </li>
+
+          <li>
+            <fieldset>
+            <legend class="font-bold">Home wanted</legend>
+          
+            <div>
+              <input type="radio" id="any" name="idealHome" value="any" class="cursor-pointer" {{isSelected "any" query.idealHome}}>
+              <label for="any">Any Location</label>
+            </div>
+          
+            <div>
+              <input type="radio" id="away" name="idealHome" value="away" class="cursor-pointer" {{isSelected "away" query.idealHome}}>
+              <label for="away">Away From Inner City</label>
+            </div>
+
+            </fieldset>
+          </li>
+
+          <li>
+            <fieldset>
+              <legend class="font-bold">Living with children</legend>
+        
+              <div>
+                <input type="radio" id="yes" name="livingWithChildren" value="yes" class="cursor-pointer" {{isSelected "yes" query.livingWithChildren}}>
+                <label for="yes">Yes</label>
+              </div>
+            
+              <div>
+                <input type="radio" id="no" name="livingWithChildren" value="no" class="cursor-pointer" {{isSelected "no" query.livingWithChildren}}>
+                <label for="no">No</label>
+              </div>
+            </fieldset>
+          </li>
+
+          <li>
+              <fieldset>
+              <legend class="font-bold">Living with dogs</legend>
+        
+              <div>
+                <input type="radio" id="yes" name="livingWithDogs" value="yes" class="cursor-pointer" {{isSelected "yes" query.livingWithDogs}}>
+                <label for="yes">Yes</label>
+              </div>
+            
+              <div>
+                <input type="radio" id="no" name="livingWithDogs" value="no" class="cursor-pointer" {{isSelected "no" query.livingWithDogs}}>
+                <label for="no">No</label>
+              </div>
+            </fieldset>
+          </li>
+
+          <li>
+            <fieldset>
+              <legend class="font-bold">Living with cats</legend>
+        
+              <div>
+                <input type="radio" id="yes" name="livingWithCats" value="yes" class="cursor-pointer" {{isSelected "yes" query.livingWithCats}}>
+                <label for="yes">Yes</label>
+              </div>
+            
+              <div>
+                <input type="radio" id="no" name="livingWithCats" value="no" class="cursor-pointer" {{isSelected "no" query.livingWithCats}}>
+                <label for="no">No</label>
+              </div>
+            </fieldset>
+          </li>
         </ul>
 
         <button type="submit">Search</button>
@@ -95,7 +169,7 @@
             similique delectus.
     </p>
 
-    <div class="md:text-start my-8 flex gap-4 ">
+    <div class="md:text-center my-8 flex justify-center gap-4 ">
       {{#isAdmin currentUser}}
         <a href="/dogs/create" class="border rounded-lg bg-accent-color p-2 cursor-pointer inline-block">Add a dog</a>
       {{/isAdmin}}
