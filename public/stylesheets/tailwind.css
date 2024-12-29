@@ -18,6 +18,28 @@
         @apply focus:h-10 focus:border-fuchsia-300 focus:border-4 outline-none  transition;
     }
 
+    .invalid{
+        border-color: red;
+        border-width: 2px;
+        border-radius: 0.5rem; 
+        background-image: url("../../assets/error-circle.svg");
+        background-size: 20px;
+        background-repeat: no-repeat;
+        background-position: calc(100% - 10px);
+        transition: all;
+    }
+
+    .valid{
+        border-color: green;
+        border-width: 2px;
+        border-radius: 0.5rem; 
+        background-image: url("../../assets/check-circle.svg");
+        background-size: 20px;
+        background-repeat: no-repeat;
+        background-position: calc(100% - 10px);
+        transition: all;
+    }
+
 }
 
 @layer utilities{
@@ -27,5 +49,19 @@
 
     .clip-circle-full{
         clip-path: circle(150% at top right);
+    }
+
+    .diagonal-clip{
+        clip-path: polygon(0% 0%,100% 0%,100% 75%,75% 75%,42% 100%,50% 75%,0% 75%);
+    }
+
+    .bg-radial{
+        background: rgb(238,174,202);
+        background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    }
+
+    .bg-metal{
+        background: rgb(255,255,255);
+        background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(88,88,88,1) 47%, rgba(255,255,255,1) 100%);
     }
 }

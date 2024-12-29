@@ -1,7 +1,7 @@
 
 <main class="md:flex gap-24"> 
 
-  <aside class="hidden md:block bg-red-400 w-64 border border-white rounded-lg" aria-label="Sidebar">
+  <aside class="hidden md:block bg-radial w-64 border border-white rounded-lg" aria-label="Sidebar">
   <div class="px-4">
     <h2>Sort & Filter</h2>
       <form action="/dogs" method="get">
@@ -87,7 +87,7 @@
 
           <li>
             <fieldset>
-            <legend class="font-bold">Home wanted</legend>
+            <legend class="font-bold">Home desired</legend>
           
             <div>
               <input type="radio" id="any" name="idealHome" value="any" class="cursor-pointer" {{isSelected "any" query.idealHome}}>
@@ -189,26 +189,53 @@
     </div>
 
 
-    <div class="md:px-10 md:py-10 bg-red-300/70 bg-bg-icons grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] justify-items-center auto-rows-fr gap-8 mx-auto ">
+    <div class="md:px-10   bg-bg-icons grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))]  auto-rows-fr gap-x-8 mx-auto ">
   
-{{#each dogs as |dog|}}
-  <article class=" bg-red-400/90 grid justify-items-center border rounded-lg p-8 cursor-pointer shadow-black shadow-md">
-    <h3 class="text-xl mt-4 mb-2 uppercase ">{{dog.name}}</h3>
-    <img class="w-[90%] aspect-square rounded-full max-w-sm mx-auto md:lg:rounded-none" src="{{dog.image}}">
-    <h4 class="mt-4 mb-2 uppercase">{{dog.sex}} <br> {{dog.age}} years old</h4>
-    <p class="leading-10 text-gray-600">{{dog.breed}}</p>
-    {{#if dog.licence}}
-    <div class="flex gap-1">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 aspect-square fill-green-600">
-    <path d="M11.001 10h2v5h-2zM11 16h2v2h-2z"></path><path d="M13.768 4.2C13.42 3.545 12.742 3.138 12 3.138s-1.42.407-1.768 1.063L2.894 18.064a1.986 1.986 0 0 0 .054 1.968A1.984 1.984 0 0 0 4.661 21h14.678c.708 0 1.349-.362 1.714-.968a1.989 1.989 0 0 0 .054-1.968L13.768 4.2zM4.661 19 12 5.137 19.344 19H4.661z"></path>
-      </svg>
-      <p class="leading-normal text-gray-600">Need a licence</p>
-    </div>   
-    {{/if}}
+  {{#each dogs as |dog|}}
+  
+  <article role="button" onclick="window.location.href='/dogs/{{dog.id}}'" class="bg-radial w-[18rem] h-[28rem] grid justify-items-center justify-center border-4 rounded-lg shadow-black shadow-md cursor-pointer hover:w-[20rem] hover:h-[30rem] transition-all">
 
-    <p class="leading-normal text-gray-600">Size : {{dog.size}}</p>
-    <a href="/dogs/{{dog.id}}" class="bg-blue-700 text-white text-center py-4 px-2 mt-6 rounded-xl font-bold hover:scale-110 transition-transform inline-block">Learn about me</a>
+    <div class="w-full pt-1 flex gap-1">
+        <h3 class="ml-4 text-xl uppercase">{{dog.name}}</h3> 
+        {{#isSex dog "male"}}<img src="../../assets/male.svg" alt="" class="w-6 h-6">{{/isSex}}
+        {{#isSex dog "female"}}<img src="../../assets/female.svg" alt="" class="w-6 h-6">{{/isSex}}
+    </div>
+              
+    <div class=" aspect-square mx-2">
+      <img class="rounded-full aspect-square  mx-auto md:w-full md:rounded-lg md:border-2" src="{{dog.image}}">
+    </div>
+
+    <div class="w-full flex justify-between text-start capitalize my-2">
+      <div class="ml-3">
+        <h4>{{dog.sex}}</h4>
+        <h4>{{dog.age}} years old</h4>
+      </div>
+      <div class="mr-6 text-center">
+        <h4>Size:</h4>
+        <h4>{{dog.size}}</h4>
+      </div>
+        
+    </div>
+
+
+    <div class="flex justify-start mb-4 gap-4 ">
+
+      <a href="/dogs/{{dog.id}}" class="bg-blue-700 border-2 text-white text-center py-2 px-6  rounded-xl font-bold hover:scale-110 transition-transform block">Learn about me</a>
+          
+      <img src="../../assets/heart.svg" alt="Add to favorites" class=" w-10 h-10">
+
+    </div>
+
+    {{#if dog.licence}}<div class="flex gap-1 justify-center border-2 rounded-b-lg bg-red-400/80 px-[0.650rem] w-[94.3%]  relative bottom-[9.5rem] ">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 aspect-square fill-black">
+        <path d="M11.001 10h2v5h-2zM11 16h2v2h-2z"><title>Requires a license</title></path><path d="M13.768 4.2C13.42 3.545 12.742 3.138 12 3.138s-1.42.407-1.768 1.063L2.894 18.064a1.986 1.986 0 0 0 .054 1.968A1.984 1.984 0 0 0 4.661 21h14.678c.708 0 1.349-.362 1.714-.968a1.989 1.989 0 0 0 .054-1.968L13.768 4.2zM4.661 19 12 5.137 19.344 19H4.661z"></path>
+      </svg>
+      <p>You need a license to pick me</p>
+    </div>{{/if}}
+
   </article>
+
+  
 {{/each}} 
 
 </div>

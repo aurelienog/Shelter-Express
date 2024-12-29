@@ -4,14 +4,14 @@
 
 <img src="{{dog.image}}" alt="" class="w-[30%] object-cover">
 
-{{#isOwnedBy dog currentUser}}
+{{#isAdmin currentUser}}
 <form method="post" action="/dogs/{{../dog.id}}/delete">
   <button type="submit">Delete</button> 
 </form>
 
 <a href="/dogs/{{../dog.id}}/update">Edit</a>
 
-{{/isOwnedBy}}
+{{/isAdmin}}
 
 
 </div>

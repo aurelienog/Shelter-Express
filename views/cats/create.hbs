@@ -13,31 +13,31 @@
     <label for="name" class="font-bold">Name<span class="text-red-600">*</span></label>
     
     <div class="relative">
-      <div class="absolute inset-y-0 start-0 flex items-center ps-2.5 pointer-events-none">
-      <img src={{#if errors.name}}"../../assets/error.svg"{{/if}}"../../assets/id.svg" alt="" class="w-7 h-7 md:w-14 md:h-14">
+        <div class="absolute inset-y-0 start-0 flex items-center ps-2.5 pointer-events-none">
+        <img src={{#if errors.name}}"../../assets/error.svg"{{/if}}"../../assets/id.svg" alt="" class="w-7 h-7 md:w-14 md:h-14">
     </div>
     <input name="name" id="name" value="{{cat.name}}" class="cursor-pointer{{#if errors.name}}border-red-600 border-4 py-4 placeholder:text-red-600 placeholder:font-bold {{/if}} input-reset focus-input md:w-full md:py-7 md:ps-20 md:text-4xl" {{#if errors.name}}placeholder="{{errors.name.message}}"{{/if}}>
-  </div>
-  </div>
+    </div>
+    </div>
 
-  <div class="{{#if errors.sex}}border-red-600 border-4 px-4 py-2 w-[235px] relative  bg-white{{/if}} rounded-lg">
+    <div class="{{#if errors.sex}}border-red-600 border-4 px-4 py-2 w-[235px] relative  bg-white{{/if}} rounded-lg">
     {{#if errors.sex}}<div class="text-red-600 font-bold flex items-center start-0 ps-2 pointer-events-none bg-white mb-2 absolute z-2">
-      <img src="../../assets/error.svg" class="w-7 h-7">{{errors.sex.message}}</div>{{/if}}
-  
-    <fieldset class="mt-2">
-      <legend class="font-bold">Sex<span class="text-red-600">*</span></legend>
-    
-      <div>
-        <input type="radio" id="male" name="sex" value="male" class="cursor-pointer">
-        <label for="male">Male</label>
-      </div>
-    
-      <div>
-        <input type="radio" id="female" name="sex" value="female" class="cursor-pointer">
-        <label for="female">Female</label>
-      </div>
-    </fieldset>
-  </div>
+        <img src="../../assets/error.svg" class="w-7 h-7">{{errors.sex.message}}</div>{{/if}}
+
+        <fieldset class="mt-2">
+            <legend class="font-bold">Sex<span class="text-red-600">*</span></legend>
+        
+            <div>
+                <input type="radio" id="male" name="sex" value="male" class="cursor-pointer">
+                <label for="male">Male</label>
+            </div>
+        
+            <div>
+                <input type="radio" id="female" name="sex" value="female" class="cursor-pointer">
+                <label for="female">Female</label>
+            </div>
+        </fieldset>
+    </div>
 
   <div>
     <label for="age" class="font-bold">Age<span class="text-red-600">*</span></label>
@@ -143,7 +143,7 @@
     <input id="image-input" name="image" onchange="readURL(this)" accept="image/*" type="file" class="border-t pt-2 mb-2 opacity-0"/>
   </div>
 
-    <button type="submit" class="w-[235px] md:w-full py-4 px-16 border rounded-lg md:col-start-2 bg-accent-color">Submit</button>
+    <button type="submit" class="w-[235px] md:w-full py-4 px-16 border rounded-lg md:col-start-2 md:row-start-11 bg-accent-color">Submit</button>
 
     <a href="/cats" class="underline text-center py-4 w-[235px] md:w-full md:col-start-1 md:row-start-11">Cancel</a>
 

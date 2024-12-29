@@ -37,3 +37,10 @@ hbs.registerHelper('isSelected', (value, queryValue) => {
   return value === queryValue ? 'checked' : '';
 });
 
+hbs.registerHelper('isSex', function(animal, sex, options) {
+  if (animal.sex === sex) {
+    return options.fn(this);
+  } else {
+    return options.inverse(this);
+  }
+});
