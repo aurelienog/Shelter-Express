@@ -6,8 +6,13 @@ module.exports = {
 ,
   theme: {
     extend: {
+
+      fontFamily: {
+
+      },
+
       colors: {
-        "primary-color": "#f9e2dc", 
+        "primary-color": "#05c3a3", 
         "hover-color": "#fffdd0",
         "accent-color": "#588157", 
         "text-color": "#cfc0bd",

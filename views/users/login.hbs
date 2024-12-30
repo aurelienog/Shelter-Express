@@ -17,14 +17,14 @@
 
       <div class="grid">
         <label for="email" class="font-bold">Email</label>
-        <input name="email" placeholder="enter you email here" required pattern="[/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/" type="email" value="{{user.email}}" 
+        <input name="email" id="email" placeholder="enter you email here" required pattern="[/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/" type="email" value="{{user.email}}" 
           class="placeholder-transparent peer cursor-pointer block border-b outline-none p-2 hover:border-b-green-600 hover:border-b-2 border-black  focus:font-bold focus:text-black focus:border-2 focus:rounded-lg focus:transition-all{{#if errors.email}}border-red-600 border-2 rounded-lg bg-red-300 {{/if}} invalid:[&:not(:placeholder-shown):not(:focus)]:invalid valid:valid">
         {{#if errors.email}}<div class="text-red-600">{{errors.email}}</div>{{/if}}
       </div>
     
       <div class="grid">
         <label for="password" class="font-bold">Password</label>
-        <input name="password" type="password" placeholder="enter you password here" required pattern=".{8,}" 
+        <input name="password" id="password" type="password" placeholder="enter you password here" required pattern=".{8,}" 
         class="placeholder-transparent peer cursor-pointer block border-b outline-none p-2 hover:border-b-black hover:border-b-2 border-black focus:font-bold focus:text-black focus:border-2 focus:rounded-lg focus:transition-all{{#if errors.password}}border-red-600 bg-red-300 rounded-lg border-2{{/if}} invalid:[&:not(:placeholder-shown):not(:focus)]:invalid valid:valid">
         {{#if errors.password}}<div class="text-red-600">{{errors.password}}</div>{{/if}}
       </div>

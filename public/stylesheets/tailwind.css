@@ -52,7 +52,7 @@
     }
 
     .diagonal-clip{
-        clip-path: polygon(0% 0%,100% 0%,100% 75%,75% 75%,42% 100%,50% 75%,0% 75%);
+        clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
     }
 
     .bg-radial{
@@ -63,5 +63,9 @@
     .bg-metal{
         background: rgb(255,255,255);
         background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(88,88,88,1) 47%, rgba(255,255,255,1) 100%);
+    }
+
+    .bg-textura{
+        background-image: url("../../assets/textura.jpg");
     }
 }
