@@ -12,9 +12,10 @@ module.exports = {
       },
 
       colors: {
-        "primary-color": "#05c3a3", 
-        "hover-color": "#fffdd0",
-        "accent-color": "#588157", 
+        "primary-color": "#a7e7da", 
+        "hover-color": "rgba(255,223,209,1)",
+        "accent-color": "#fffdd0",
+        "cta-color": "#11115b", 
         "text-color": "#cfc0bd",
         },
       
@@ -23,7 +24,8 @@ module.exports = {
           "close-menu": "url('../assets/bg-close-menu.svg')",
           "bg-topo-image": "url('../assets/topo.jpeg')",
           "bg-icons": "url('../assets/bg-icons.png')",
-          "dog-shape": "url('../assets/dog-shape.jpg')"
+          "dog-shape": "url('../assets/dog-shape.jpg')",
+          "paper": "url('../assets/paper-textured.png')"
         }
     },
   },

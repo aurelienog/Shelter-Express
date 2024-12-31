@@ -1,40 +1,69 @@
-<main>
+<main class="bg-textura bg-auto">
 
   {{#if errors}} <div class=" text-center mt-10 border-t-2 border-b-2 p-4 bg-white font-extrabold border-red-600">Please review form data</div>{{/if}} 
 
 
-  <div class="flex">
-    <div>
+  <section class="grid md:grid-cols-2 md:gap-x-6 grid-flow-row max-w-[100rem] mx-24 space-y-8">
+    
+    <div class="md:grid my-12 p-10 grid-cols-6 hidden justify-self-center ">
+
+      <article class="col-start-1 col-end-4 border-4 shadow-lg p-6  bg-primary-color">
+        <h3 class="text-2xl mb-6">Organize Your Volunteer Activities</h3>
+        <p class="leading-6">"Manage your schedule effortlessly by adding events to your calendar, detailing the tasks you'll be performing, and sharing your availability.</p>
+        <div class="justify-self-center flex pt-4">
+          <img src="../../assets/calendar.png" alt="" class="w-16 m-4">
+          <img src="../../assets/notif.png" alt="" class="w-16 m-4">
+        </div> 
+      </article>
+
+      <article class="col-start-4 col-end-7 border-4 shadow-xl h-5/6 bg-accent-color px-6 pt-6 rotate-12">
+        <h3 class="text-2xl mb-6">Save Your Favorite Animals</h3>
+        <p class="leading-6">Keep track of the animals that have captured your heart by adding them to your favorites. Easily revisit their profiles and stay updated on their availability for adoption.</p>
+        <img src="../../assets/heart.svg" alt="" class="w-16 justify-self-end mb-20 rotate-12">
+        
+        
+      </article>
+
+      <article class="col-start-2 col-end-6 border-4 shadow-2xl p-6 row-start-2 -rotate-[10deg] bg-hover-color relative -top-20">
+        <h3 class="text-2xl mb-6">View Your Activity History</h3>
+        <p class="leading-6">Access a complete history of your volunteer activities, including past events, tasks completed, animals fostered and more. Stay informed and celebrate your impact!</p>
+      </article>
+
 
     </div>
-    
-    <form method="post" action="/users" class="group mx-auto py-16 px-6 flex flex-col gap-4 justify-center" novalidate>
 
-  <article class="space-y-4 mb-8">
-    <h2 class="text-3xl text-center font-medium">Login form</h2>
-  </article>
+    <div class="bg-paper md:w-9/12 md:m-auto max-w-[500px] h-5/6">
+    
+    <form method="post" action="/users" class="group mx-10 px-12 py-16 flex flex-col my-auto gap-4 md:justify-self-center p-6" novalidate>
+
+      <article class="mb-24">
+        <h2 class="text-4xl text-center font-bold uppercase">Login form</h2>
+      </article>
 
 
       <div class="grid">
         <label for="email" class="font-bold">Email</label>
         <input name="email" id="email" placeholder="enter you email here" required pattern="[/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/" type="email" value="{{user.email}}" 
-          class="placeholder-transparent peer cursor-pointer block border-b outline-none p-2 hover:border-b-green-600 hover:border-b-2 border-black  focus:font-bold focus:text-black focus:border-2 focus:rounded-lg focus:transition-all{{#if errors.email}}border-red-600 border-2 rounded-lg bg-red-300 {{/if}} invalid:[&:not(:placeholder-shown):not(:focus)]:invalid valid:valid">
+          class="cursor-pointer peer block border-b outline-none p-2 bg-transparent  hover:border-b-2 border-black  focus:font-bold focus:text-black focus:border-2 focus:rounded-lg focus:transition-all{{#if errors.email}}border-red-600 rounded-lg bg-red-300 border-2{{/if}} invalid:[&:not(:placeholder-shown):not(:focus)]:invalid valid:valid placeholder-transparent">
         {{#if errors.email}}<div class="text-red-600">{{errors.email}}</div>{{/if}}
       </div>
     
       <div class="grid">
         <label for="password" class="font-bold">Password</label>
         <input name="password" id="password" type="password" placeholder="enter you password here" required pattern=".{8,}" 
-        class="placeholder-transparent peer cursor-pointer block border-b outline-none p-2 hover:border-b-black hover:border-b-2 border-black focus:font-bold focus:text-black focus:border-2 focus:rounded-lg focus:transition-all{{#if errors.password}}border-red-600 bg-red-300 rounded-lg border-2{{/if}} invalid:[&:not(:placeholder-shown):not(:focus)]:invalid valid:valid">
+        class="placeholder-transparent bg-transparent peer cursor-pointer block border-b outline-none p-2 hover:border-b-black hover:border-b-2 border-black focus:font-bold focus:text-black focus:border-2 focus:rounded-lg focus:transition-all{{#if errors.password}}border-red-600 bg-red-300 rounded-lg border-2{{/if}} invalid:[&:not(:placeholder-shown):not(:focus)]:invalid valid:valid">
         {{#if errors.password}}<div class="text-red-600">{{errors.password}}</div>{{/if}}
       </div>
     
-      <button type="submit" class="bg-white text-black text-center p-4 rounded-3xl border border-black flex items-center justify-center gap-2
-      hover:bg-black hover:text-white hover:border-black transition-colors group-invalid:pointer-events-none group-invalid:opacity-30">Submit</button>
-      <p class="mt-6 text-center">Not registered?<a href="/users/create" class="text-green-600 text-lg inline-block ml-2 underline">Create an account</a></p>
+      <button type="submit" class="bg-black text-white text-center p-4 mt-12 rounded-3xl border border-black flex items-center justify-center gap-2
+      hover:bg-white hover:text-black hover:border-black transition-colors group-invalid:pointer-events-none group-invalid:opacity-30">Submit</button>
+      <p class="mt-6 text-center">Not registered?<a href="/users/create" class="text-green-600 text-lg inline-block ml-2 mb-16 underline">Create an account</a></p>
       
     </form>
 
-  </div>
+    </div>
+
+
+  </section>
     
 </main>
