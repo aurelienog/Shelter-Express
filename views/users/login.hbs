@@ -7,7 +7,7 @@
     
     <div class="md:grid my-12 p-10 grid-cols-6 hidden justify-self-center ">
 
-      <article class="col-start-1 col-end-4 border-4 shadow-lg p-6  bg-primary-color">
+      <article class="col-start-1 col-end-4 border-4 shadow-lg p-6 bg-paper bg-blend-multiply bg-primary-color">
         <h3 class="text-2xl mb-6">Organize Your Volunteer Activities</h3>
         <p class="leading-6">"Manage your schedule effortlessly by adding events to your calendar, detailing the tasks you'll be performing, and sharing your availability.</p>
         <div class="justify-self-center flex pt-4">
@@ -16,15 +16,15 @@
         </div> 
       </article>
 
-      <article class="col-start-4 col-end-7 border-4 shadow-xl h-5/6 bg-accent-color px-6 pt-6 rotate-12">
+      <article class="col-start-4 col-end-7 border-4 shadow-xl h-5/6 bg-paper bg-blend-multiply  bg-accent-color px-6 pt-6 rotate-12">
         <h3 class="text-2xl mb-6">Save Your Favorite Animals</h3>
         <p class="leading-6">Keep track of the animals that have captured your heart by adding them to your favorites. Easily revisit their profiles and stay updated on their availability for adoption.</p>
-        <img src="../../assets/heart.svg" alt="" class="w-16 justify-self-end mb-20 rotate-12">
+        <img src="../../assets/heart.png" alt="" class="w-16 justify-self-end mb-20 rotate-12">
         
         
       </article>
 
-      <article class="col-start-2 col-end-6 border-4 shadow-2xl p-6 row-start-2 -rotate-[10deg] bg-hover-color relative -top-20">
+      <article class="col-start-2 col-end-6 border-4 shadow-2xl p-6 row-start-2 -rotate-[10deg] bg-paper bg-blend-multiply bg-hover-color relative -top-20">
         <h3 class="text-2xl mb-6">View Your Activity History</h3>
         <p class="leading-6">Access a complete history of your volunteer activities, including past events, tasks completed, animals fostered and more. Stay informed and celebrate your impact!</p>
       </article>
@@ -32,30 +32,30 @@
 
     </div>
 
-    <div class="bg-paper md:w-9/12 md:m-auto max-w-[500px] h-5/6">
+    <div class="bg-paper bg-white bg-blend-multiply  md:w-9/12 md:m-auto max-w-[500px] h-5/6 border-4 ">
     
-    <form method="post" action="/users" class="group mx-10 px-12 py-16 flex flex-col my-auto gap-4 md:justify-self-center p-6" novalidate>
+    <form method="post" action="/users" class="group mx-10 px-12 py-12 flex flex-col my-auto gap-4 md:justify-self-center p-6" novalidate>
 
-      <article class="mb-24">
-        <h2 class="text-4xl text-center font-bold uppercase">Login form</h2>
+      <article class="mb-16">
+        <h2 class="text-4xl text-center font-bold uppercase">Login</h2>
       </article>
 
 
       <div class="grid">
         <label for="email" class="font-bold">Email</label>
         <input name="email" id="email" placeholder="enter you email here" required pattern="[/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/" type="email" value="{{user.email}}" 
-          class="cursor-pointer peer block border-b outline-none p-2 bg-transparent  hover:border-b-2 border-black  focus:font-bold focus:text-black focus:border-2 focus:rounded-lg focus:transition-all{{#if errors.email}}border-red-600 rounded-lg bg-red-300 border-2{{/if}} invalid:[&:not(:placeholder-shown):not(:focus)]:invalid valid:valid placeholder-transparent">
+          class="cursor-pointer peer block border-b border-green-600 outline-none p-2 bg-transparent  hover:border-b-2   focus:font-bold focus:text-black focus:border-2 focus:rounded-lg focus:transition-all{{#if errors.email}}border-red-600 rounded-lg bg-red-300 border-2{{/if}} invalid:[&:not(:placeholder-shown):not(:focus)]:invalid valid:valid placeholder-transparent">
         {{#if errors.email}}<div class="text-red-600">{{errors.email}}</div>{{/if}}
       </div>
     
       <div class="grid">
         <label for="password" class="font-bold">Password</label>
         <input name="password" id="password" type="password" placeholder="enter you password here" required pattern=".{8,}" 
-        class="placeholder-transparent bg-transparent peer cursor-pointer block border-b outline-none p-2 hover:border-b-black hover:border-b-2 border-black focus:font-bold focus:text-black focus:border-2 focus:rounded-lg focus:transition-all{{#if errors.password}}border-red-600 bg-red-300 rounded-lg border-2{{/if}} invalid:[&:not(:placeholder-shown):not(:focus)]:invalid valid:valid">
+        class="placeholder-transparent bg-transparent peer cursor-pointer border-green-600 block border-b outline-none p-2  hover:border-b-2  focus:font-bold focus:text-black focus:border-2 focus:rounded-lg focus:transition-all{{#if errors.password}}border-red-600 bg-red-300 rounded-lg border-2{{/if}} invalid:[&:not(:placeholder-shown):not(:focus)]:invalid valid:valid">
         {{#if errors.password}}<div class="text-red-600">{{errors.password}}</div>{{/if}}
       </div>
     
-      <button type="submit" class="bg-black text-white text-center p-4 mt-12 rounded-3xl border border-black flex items-center justify-center gap-2
+      <button type="submit" class="bg-black text-white text-center p-4 mt-8 rounded-3xl border border-black flex items-center justify-center gap-2
       hover:bg-white hover:text-black hover:border-black transition-colors group-invalid:pointer-events-none group-invalid:opacity-30">Submit</button>
       <p class="mt-6 text-center">Not registered?<a href="/users/create" class="text-green-600 text-lg inline-block ml-2 mb-16 underline">Create an account</a></p>
       

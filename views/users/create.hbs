@@ -1,49 +1,55 @@
-<main class="w-[90%] h-full grid max-w-screen-xl mx-auto md:grid-cols-[2fr_3fr] lg:grid-cols-2">
+<main class="bg-constellation py-12">
 
-  <div class="bg-bg-topo-image bg-cover b-center hidden md:block"></div>
+<section class=" h-full opacity-90 bg-linear grid max-w-screen-xl mx-auto  md:grid-cols-[3fr_2fr] border-2 rounded-3xl ">
 
-  <section>
 
-<form class="group h-full max-w-md mx-auto py-16 px-6 flex flex-col gap-4 justify-center"method="post" action="/users/create">
-
-<article class="space-y-4 mb-8">
-  <h2 class="text-3xl text-center font-medium">Registration form</h2>
-</article>
-
-  <div class="grid">
-    <label for="name" class="font-bold">Name</label>
-    <input name="name" id="name" value="{{user.name}}" required class="cursor-pointer peer block border-b outline-none p-2 hover:border-b-green-600 hover:border-b-2 border-black focus:placeholder:text-black focus:font-bold focus:text-black focus:border-2 focus:rounded-lg focus:transition-all{{#if errors.name}}border-red-600 border-2 rounded-lg bg-red-300 {{/if}}">
-    {{#if errors.name}}<div class="text-red-600 font-medium">{{errors.name}}</div>{{/if}}
+  <div class="m-4 hidden  md:block">
+    <img src="../../assets/register.jpg" alt="" class="h-full bg-contain rounded-3xl">
   </div>
 
-  <div class="grid">
-    <label for="email" class="font-bold">Email</label>
-    <input name="email" id="email" type="email" placeholder="enter you email here" required pattern="[/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/" value="{{user.email}}" class="cursor-pointer peer block border-b outline-none p-2 hover:border-b-green-600 hover:border-b-2 border-black  focus:font-bold focus:text-black focus:border-2 focus:rounded-lg focus:transition-all{{#if errors.email}}border-red-600 rounded-lg bg-red-300 border-2{{/if}} invalid:[&:not(:placeholder-shown):not(:focus)]:invalid valid:valid placeholder-transparent">  
-    {{#if errors.email}}<div class=" text-red-600 font-medium">{{errors.email}}</div>{{/if}}
+  <div>
+
+    <form class="group h-full max-w-md mx-auto py-12 px-6 flex flex-col gap-4 justify-center"method="post" action="/users/create">
+
+    <article class="space-y-4 mb-8">
+      <h2 class="text-3xl text-center font-medium">Registration form</h2>
+    </article>
+
+      <div class="grid">
+        <label for="name" class="font-bold">Name</label>
+        <input name="name" id="name" value="{{user.name}}" required class="bg-transparent cursor-pointer peer block border-b outline-none p-2 hover:border-b-2 border-black focus:placeholder:text-black focus:font-bold focus:text-black focus:border-2 focus:rounded-lg focus:transition-all{{#if errors.name}}border-red-600 border-2 rounded-lg bg-red-300 {{/if}}">
+        {{#if errors.name}}<div class="text-red-600 font-medium">{{errors.name}}</div>{{/if}}
+      </div>
+
+      <div class="grid">
+        <label for="email" class="font-bold">Email</label>
+        <input name="email" id="email" type="email" placeholder="enter you email here" required pattern="[/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/" value="{{user.email}}" class="bg-transparent cursor-pointer peer block border-b outline-none p-2 hover:border-b-2 border-black  focus:font-bold focus:text-black focus:border-2 focus:rounded-lg focus:transition-all{{#if errors.email}}border-red-600 rounded-lg bg-red-300 border-2{{/if}} invalid:[&:not(:placeholder-shown):not(:focus)]:invalid valid:valid placeholder-transparent">  
+        {{#if errors.email}}<div class=" text-red-600 font-medium">{{errors.email}}</div>{{/if}}
+      </div>
+      
+      <div class="grid">
+        <label for="password" class="font-bold">Password</label>
+        <input name="password" id="password" type="password" placeholder="enter you password here" required pattern=".{8,}"  class="bg-transparent cursor-pointer peer block border-b outline-none p-2 hover:border-b-2 border-black  focus:font-bold focus:text-black focus:border-2 focus:rounded-lg focus:transition-all{{#if errors.password}}border-red-600 bg-red-300 rounded-lg border-2{{/if}} invalid:[&:not(:placeholder-shown):not(:focus)]:invalid valid:valid placeholder-transparent">
+        {{#if errors.password}}<div class="text-red-600 font-medium">{{errors.password}}</div>{{/if}}
+      </div>
+
+      <article class="grid gap-6 mt-8">
+        <button type="submit" class="bg-black text-white text-center p-4 rounded-3xl border
+        hover:bg-white hover:text-black hover:border-black hover:border-2 transition-all group-invalid:pointer-events-none group-invalid:opacity-30">Create Account</button>
+
+        <button type="submit" class="bg-white text-black text-center p-4 rounded-3xl border border-black flex items-center justify-center gap-2
+        hover:bg-black hover:text-white hover:border-black transition-all group-invalid:pointer-events-none group-invalid:opacity-30">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-black hover:fill-white">
+            <path d="M20.283 10.356h-8.327v3.451h4.792c-.446 2.193-2.313 3.453-4.792 3.453a5.27 5.27 0 0 1-5.279-5.28 5.27 5.27 0 0 1 5.279-5.279c1.259 0 2.397.447 3.29 1.178l2.6-2.599c-1.584-1.381-3.615-2.233-5.89-2.233a8.908 8.908 0 0 0-8.934 8.934 8.907 8.907 0 0 0 8.934 8.934c4.467 0 8.529-3.249 8.529-8.934 0-.528-.081-1.097-.202-1.625z"></path>
+            </svg>
+          Sign up with Google
+          </button>
+      </article>
+
+        <p class="mt-6 text-center">Already have an account?<a href="/users" class="text-lg inline-block ml-2 underline">Sign in</a></p>
+        
+    </form>
   </div>
-  
-  <div class="grid">
-    <label for="password" class="font-bold">Password</label>
-    <input name="password" id="password" type="password" placeholder="enter you password here" required pattern=".{8,}"  class="cursor-pointer peer block border-b outline-none p-2 hover:border-b-black hover:border-b-2 border-black  focus:font-bold focus:text-black focus:border-2 focus:rounded-lg focus:transition-all{{#if errors.password}}border-red-600 bg-red-300 rounded-lg border-2{{/if}} invalid:[&:not(:placeholder-shown):not(:focus)]:invalid valid:valid placeholder-transparent">
-    {{#if errors.password}}<div class="text-red-600 font-medium">{{errors.password}}</div>{{/if}}
-  </div>
 
-  <article class="grid gap-6 mt-8">
-    <button type="submit" class="bg-black text-white text-center p-4 rounded-3xl border
-    hover:bg-white hover:text-black hover:border-black hover:border-2 transition-all group-invalid:pointer-events-none group-invalid:opacity-30">Create Account</button>
-
-    <button type="submit" class="bg-white text-black text-center p-4 rounded-3xl border border-black flex items-center justify-center gap-2
-    hover:bg-black hover:text-white hover:border-black transition-all group-invalid:pointer-events-none group-invalid:opacity-30">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-black group-hover:fill-white">
-        <path d="M20.283 10.356h-8.327v3.451h4.792c-.446 2.193-2.313 3.453-4.792 3.453a5.27 5.27 0 0 1-5.279-5.28 5.27 5.27 0 0 1 5.279-5.279c1.259 0 2.397.447 3.29 1.178l2.6-2.599c-1.584-1.381-3.615-2.233-5.89-2.233a8.908 8.908 0 0 0-8.934 8.934 8.907 8.907 0 0 0 8.934 8.934c4.467 0 8.529-3.249 8.529-8.934 0-.528-.081-1.097-.202-1.625z"></path>
-        </svg>
-      Sign up with Google
-      </button>
-  </article>
-
-    <p class="mt-6 text-center">Already have an account?<a href="/users" class="text-green-600 text-lg inline-block ml-2 underline">Sign in</a></p>
-    
-  
-</form>
   </section>
 </main>
