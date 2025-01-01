@@ -42,11 +42,11 @@ if(req.query.livingWithCats) {
 }
 
 
-
   Dog.find(criterial)
     .then((dogs) => {
       console.log(criterial)
-      res.render('./dogs/list', { dogs : dogs, query: req.query, maxAge: req.query.maxAge || "15" });
+      res.render('./dogs/list', { dogs : dogs, query: req.query });
+      console.log(req.query.maxAge)
     })
     .catch(next)
 }

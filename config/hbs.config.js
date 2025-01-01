@@ -44,3 +44,7 @@ hbs.registerHelper('isSex', function(animal, sex, options) {
     return options.inverse(this);
   }
 });
+
+hbs.registerHelper('isMaxAge', (value) => {
+  return value === undefined ? '15' : value;
+});
