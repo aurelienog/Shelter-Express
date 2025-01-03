@@ -55,8 +55,8 @@
             <label for="large">Large (11 - 25kg)</label>
           </div>              
           <div>
-            <input type="radio" id="xl" name="size" value="xl" class="cursor-pointer" {{isSelected "xl" query.size}}>
-            <label for="xl">Extra-large (+ 26 kg)</label>
+            <input type="radio" id="giant" name="size" value="giant" class="cursor-pointer" {{isSelected "giant" query.size}}>
+            <label for="giant">Giant (+ 26 kg)</label>
           </div>
         </fieldset>
           </li>
@@ -74,17 +74,17 @@
 
           <li>
             <fieldset class="mt-8">
-            <legend class="font-bold flex items-center gap-2"> Need a licence?
+            <legend class="font-bold flex items-center gap-2"> Need a license?
                 <img src="../../assets/info.svg" alt="More information about licensing" class="w-5">
             </legend>
 
             <div>
-              <input type="radio" id="yes" name="licence" value="yes" class="cursor-pointer" {{isSelected "yes" query.licence}}>
+              <input type="radio" id="yes" name="license" value="yes" class="cursor-pointer" {{isSelected "yes" query.license}}>
               <label for="yes">Yes</label>
             </div>
         
             <div>
-              <input type="radio" id="no" name="licence" value="no" class="cursor-pointer" {{isSelected "no" query.licence}}>
+              <input type="radio" id="no" name="license" value="no" class="cursor-pointer" {{isSelected "no" query.license}}>
               <label for="no">No</label>
             </div>
             </fieldset>
@@ -233,7 +233,7 @@
         
 
 
-      {{#if dog.licence}}<div class="flex gap-1 justify-center border-2 py-1 rounded-b-lg bg-red-400/80 px-[0.650rem] w-[91%] absolute bottom-[8rem] ">
+      {{#if dog.license}}<div class="flex gap-1 justify-center border-2 py-1 rounded-b-lg bg-red-400/80 px-[0.650rem] w-[91%] absolute bottom-[8rem] ">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 aspect-square fill-black">
           <path d="M11.001 10h2v5h-2zM11 16h2v2h-2z"><title>Requires a license</title></path><path d="M13.768 4.2C13.42 3.545 12.742 3.138 12 3.138s-1.42.407-1.768 1.063L2.894 18.064a1.986 1.986 0 0 0 .054 1.968A1.984 1.984 0 0 0 4.661 21h14.678c.708 0 1.349-.362 1.714-.968a1.989 1.989 0 0 0 .054-1.968L13.768 4.2zM4.661 19 12 5.137 19.344 19H4.661z"></path>
         </svg>

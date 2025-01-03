@@ -16,7 +16,7 @@
       <div class="absolute inset-y-0 start-0 flex items-center ps-2.5 pointer-events-none">
       <img src={{#if errors.name}}"../../assets/error.svg"{{/if}}"../../assets/id.svg" alt="" class="w-7 h-7 md:w-14 md:h-14">
     </div>
-    <input name="name" id="name" value="{{dog.name}}" class="cursor-pointer{{#if errors.name}}border-red-600 border-4 py-4 placeholder:text-red-600 placeholder:font-bold {{/if}} input-reset focus-input md:w-full md:py-7 md:ps-20 md:text-4xl" {{#if errors.name}}placeholder="{{errors.name.message}}"{{/if}}>
+    <input name="name" id="name" value="{{dog.name}}" class="capitalize cursor-pointer{{#if errors.name}}border-red-600 border-4 py-4 placeholder:text-red-600 placeholder:font-bold {{/if}} input-reset focus-input md:w-full md:py-7 md:ps-20 md:text-4xl" {{#if errors.name}}placeholder="{{errors.name.message}}"{{/if}}>
   </div>
   </div>
 
@@ -59,18 +59,18 @@
     <input name="breed" id="breed" value="{{dog.breed}}" class="input-reset focus-input cursor-pointer">
   </div></div>
   
-  <div class="{{#if errors.licence}}border-red-600 border-4 px-4 py-2 w-[235px] relative  bg-white{{/if}} rounded-lg">
-    {{#if errors.licence}}<div class="text-red-600 font-bold flex items-center start-0 ps-2 pointer-events-none bg-white mb-2 absolute z-2">
-      <img src="../../assets/error.svg" class="w-7 h-7">{{errors.licence.message}}</div>{{/if}}
+  <div class="{{#if errors.license}}border-red-600 border-4 px-4 py-2 w-[235px] relative  bg-white{{/if}} rounded-lg">
+    {{#if errors.license}}<div class="text-red-600 font-bold flex items-center start-0 ps-2 pointer-events-none bg-white mb-2 absolute z-2">
+      <img src="../../assets/error.svg" class="w-7 h-7">{{errors.license.message}}</div>{{/if}}
     <fieldset class="mt-2">
-      <legend class="font-bold">Need a licence?<span class="text-red-600">*</span></legend>
+      <legend class="font-bold">Need a license?<span class="text-red-600">*</span></legend>
       <div>
-        <input type="radio" id="yes" name="licence" value="yes" class="cursor-pointer">
+        <input type="radio" id="yes" name="license" value="yes" class="cursor-pointer">
         <label for="yes">Yes</label>
       </div>
         
       <div>
-        <input type="radio" id="no" name="licence" value="no" class="cursor-pointer">
+        <input type="radio" id="no" name="license" value="no" class="cursor-pointer">
         <label for="no">No</label>
       </div>
     </fieldset>
@@ -95,8 +95,8 @@
             <label for="large">Large</label>
           </div>              
           <div>
-            <input type="radio" id="xl" name="size" value="xl" class="cursor-pointer">
-            <label for="xl">Extra-large</label>
+            <input type="radio" id="giant" name="size" value="giant" class="cursor-pointer">
+            <label for="giant">Giant</label>
           </div>
         </fieldset>
       </div>

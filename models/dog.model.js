@@ -7,7 +7,7 @@ const schema = new mongoose.Schema({
   sex: { type: String, required: [true, "Sex is required"] },
   size: { type: String, required: [true, "Size is required"] },
   weight: { type: Number, required: false },
-  licence: { type: Boolean, required: [true, "License is required"] },
+  license: { type: Boolean, required: [true, "License is required"] },
   idealHome: { type: String, required: false },
   livingWithChildren: { type: Boolean, required: false },
   livingWithDogs: { type: Boolean, required: false },

@@ -20,8 +20,8 @@ if(req.query.maxAge) {
   criterial.age = { $lte: parseInt(req.query.maxAge, 10) }
 }
 
-if(req.query.licence) {
-  criterial.licence = req.query.licence;
+if(req.query.license) {
+  criterial.license = req.query.license;
 }
 
 if(req.query.idealHome) {
@@ -83,7 +83,7 @@ module.exports.doCreate = (req, res, next) => {
       sex = req.body.sex;
       size = req.body.size;
       weight = req.body.weight;
-      licence = req.body.licence;
+      license = req.body.license;
       idealHome = req.body.idealHome;
       livingWithChildren = req.body.livingWithChildren;
       livingWithDogs = req.body.livingWithDogs;
@@ -117,7 +117,7 @@ module.exports.doUpdate = (req, res, next) => {
       sex = req.body.sex;
       size = req.body.size;
       weight = req.body.weight;
-      licence = req.body.licence;
+      license = req.body.license;
       idealHome = req.body.idealHome;
       livingWithChildren = req.body.livingWithChildren;
       livingWithDogs = req.body.livingWithDogs;
