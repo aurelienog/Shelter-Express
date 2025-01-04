@@ -194,7 +194,7 @@
     <img id="image" src={{#if errors.image}}"../../assets/imageError.svg"{{/if}}"../../assets/image.svg" width="200" alt="Image preview" class="mx-auto md:h-3/4 md:w-auto md:max-h-[600px] aspect-square object-cover"/>
     </label>
     
-    <input id="image-input" name="image" onchange="readURL(this)" accept="image/*" type="file" class="border-t pt-2 mb-2 opacity-0"/>
+    <input id="image-input" multiple name="image" onchange="readURL(this)" accept="image/*" type="file" class="border-t pt-2 mb-2 opacity-0"/>
   </div>
 
     <button type="submit" class="w-[235px] md:w-full py-4 px-16 border rounded-lg md:col-start-2 text-white bg-cta">Submit</button>

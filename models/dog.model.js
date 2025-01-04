@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const schema = new mongoose.Schema({
-  image: { type: String, required: [true, "A photo is required"]},
+  images: { type: Array, required: [true, "A photo is required"]},
   name: { type: String, required: [true, "Name is required"] },
   age: { type: Number, required: [true, "Age is required"] },
   breed: { type: String, required: false },

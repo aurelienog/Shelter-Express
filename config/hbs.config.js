@@ -48,3 +48,7 @@ hbs.registerHelper('isSex', function(animal, sex, options) {
 hbs.registerHelper('isMaxAge', (value) => {
   return value === undefined ? '15' : value;
 });
+
+hbs.registerHelper('getImageByIndex', function(imagesArray, index) {
+  return imagesArray && imagesArray[index] ? imagesArray[index] : '';
+});

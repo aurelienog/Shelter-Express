@@ -10,7 +10,7 @@ routes.get("/dogs/create", secure.isAuthenticated, secure.checkRole('admin'), do
 routes.post("/dogs/create", secure.isAuthenticated, secure.checkRole('admin'), (req, res, next) => {
     console.log('Solicitud recibida:', 'body', req.body, 'file', req.file);
     next();
-}, storage.single('image'), dogs.doCreate);
+}, storage.array('image', 3), dogs.doCreate);
 routes.get("/dogs/:id/update", secure.isAuthenticated, secure.checkRole('admin'), dogs.update);
 routes.post("/dogs/:id/update", secure.isAuthenticated, secure.checkRole('admin'), dogs.doUpdate);
 routes.get("/dogs/:id", dogs.detail);

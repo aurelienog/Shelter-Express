@@ -2,26 +2,32 @@
 
   <header>
 
-    <section class="mx-auto flex flex-col items-center bg-linear px-8 pt-8">
+    <section class="mx-auto flex flex-col items-center bg-linear p-8">
+        
+        <input type="checkbox" id="toggle-next" class="peer/toggle-next hidden" />
+        <input type="checkbox" id="toggle-prev" class="peer/toggle-prev hidden" />
 
       <div class="order-last m-8">
-        <button class="rounded-full w-10 h-10 mr-1 bg-white/40 font-mono font-bold transition-all hover:bg-white "><</button>
-        <button class="rounded-full w-10 h-10 ml-1 bg-white/40 font-mono font-bold transition-all hover:bg-white ">></button>
+
+        <label for="toggle-prev" class="rounded-full px-4 py-3 bg-white/40 font-mono font-bold transition-all hover:bg-white cursor-pointer"><</label>
+        <label for="toggle-next" class="rounded-full px-4 py-3  bg-white/40 font-mono font-bold transition-all hover:bg-white cursor-pointer">></label>
+
       </div>
 
-      <div class="md:grid md:grid-cols-3 gap-6  md:max-h-[800px]">
+      <div class="md:grid md:grid-cols-[2fr_1fr] md:grid-rows-2 gap-6 md:max-h-[800px] overflow-hidden">
         
-        <img src="{{dog.image}}" alt="{{dog.name}}'s photo" class="mb-4 md:mb-0 col-start-1 col-end-3 row-span-full rounded-lg aspect-[4/3] object-cover">
+        <img src="{{getImageByIndex dog.images 0}}" alt="{{dog.name}}'s photo" class="mb-4 md:mb-0 col-start-1 row-span-full h-full rounded-lg aspect-[4/3] object-cover">
 
-        <div class="flex flex-col justify-between">
-          <div>
-            <img src="{{dog.image}}" alt="{{dog.name}}'s photo" class="mb-4 md:mb-0 rounded-lg aspect-[4/3] object-cover">
-          </div>
-          <div>
-            <img src="{{dog.image}}" alt="{{dog.name}}'s photo" class="mb-4 md:mb-0 rounded-lg aspect-[4/3] object-cover">
-          </div>
+
+        <div class="row-start-1 row-end-2 aspect-[4/3] overflow-hidden rounded-lg">
+          <img src="{{getImageByIndex dog.images 1}}" alt="{{dog.name}}'s photo" class="mb-4 md:mb-0 w-full object-cover">
+        </div>
+
+        <div class="row-start-2 row-end-3  aspect-[4/3] overflow-hidden rounded-lg">
+          <img src="{{getImageByIndex dog.images 2}}" alt="{{dog.name}}'s photo" class="mb-4 md:mb-0 w-full object-cover">
+        </div>
           
-        </div>     
+          
       </div>
 
     </section> 

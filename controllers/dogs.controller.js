@@ -66,9 +66,9 @@ module.exports.create = (req, res, next) => {
 
 module.exports.doCreate = (req, res, next) => {
   console.log('body', req.body);
-    console.log('file',req.file);
-    if (req.file) {
-      req.body.image = req.file.path;
+    console.log('file',req.files);
+    if (req.files) {
+      req.body.images = req.files.map(file => file.path);
     }
     
   const dog = req.body;
