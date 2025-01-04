@@ -2,15 +2,25 @@
 
   <header>
 
-    <section class="mx-auto flex flex-col items-center bg-linear">
+    <section class="mx-auto flex flex-col items-center bg-linear px-8 pt-8">
 
-      <div class="md:grid md:grid-cols-3 gap-8 p-8">
+      <div class="order-last m-8">
+        <button class="rounded-full w-10 h-10 mr-1 bg-white/40 font-mono font-bold transition-all hover:bg-white "><</button>
+        <button class="rounded-full w-10 h-10 ml-1 bg-white/40 font-mono font-bold transition-all hover:bg-white ">></button>
+      </div>
+
+      <div class="md:grid md:grid-cols-3 gap-6  md:max-h-[800px]">
         
-        <img src="{{dog.image}}" alt="{{dog.name}}'s photo" class="col-start-1 col-end-3 row-start-1 row-end-2 rounded-lg">
+        <img src="{{dog.image}}" alt="{{dog.name}}'s photo" class="mb-4 md:mb-0 col-start-1 col-end-3 row-span-full rounded-lg aspect-[4/3] object-cover">
 
         <div class="flex flex-col justify-between">
-          <img src="{{dog.image}}" alt="{{dog.name}}'s photo" class="rounded-lg">
-          <img src="{{dog.image}}" alt="{{dog.name}}'s photo" class="rounded-lg">
+          <div>
+            <img src="{{dog.image}}" alt="{{dog.name}}'s photo" class="mb-4 md:mb-0 rounded-lg aspect-[4/3] object-cover">
+          </div>
+          <div>
+            <img src="{{dog.image}}" alt="{{dog.name}}'s photo" class="mb-4 md:mb-0 rounded-lg aspect-[4/3] object-cover">
+          </div>
+          
         </div>     
       </div>
 
@@ -23,13 +33,12 @@
         <div class="flex justify-between items-center mb-8">
 
           <div class="flex">
-            <h2 class=" text-5xl ">{{dog.name}} {{#if dog.license}}WARNING NEED A LICENSE{{/if}}</h2>
+            <h2 class="text-5xl capitalize">{{dog.name}}</h2>
           </div>
           
           {{#isAdmin currentUser}}
-          <div class="flex items-center gap-8">
-            
-            
+          <div class="md:flex gap-8">
+
               <form method="post" action="/dogs/{{../dog.id}}/delete">
                 <div class="flex items-center gap-1">
                   <img src="../../assets/remove.svg" alt="" class="w-8">
@@ -51,14 +60,25 @@
 
         <p class="mb-8 leading-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat nam error voluptatem vero, assumenda ullam voluptatibus dolorum eveniet! Inventore ratione ut mollitia impedit! Ullam at, cum excepturi nemo cupiditate commodi!</p>
 
-        <div class="grid grid-cols-[minmax(300px,_1fr)_auto] gap-8">
+        <div class="md:grid md:grid-cols-[minmax(300px,_1fr)_auto] gap-8">
           
           <article class="grid grid-cols-2 col-start-1 grid-flow-row gap-2 ">
 
+            {{#if dog.license}}
+
+            <div class="rounded-lg md:col-span-full bg-white/60 p-2 flex items-center gap-3">
+              <div class="w-12">
+                <img src="../../assets/warning.png" alt="" class="w-10 justify-self-end">
+              </div>
+              <p class="text-2xl">You need an administrative license to pick me !</p>
+            </div>
+            
+            {{/if}}
+
             <div class="rounded-lg bg-white/60 p-2 flex items-center gap-3">
               <div class="w-12">
-                {{#isSex dog "male"}}<img src="../../assets/male.png" alt="" class="w-11 ">{{/isSex}}
-                {{#isSex dog "female"}}<img src="../../assets/female.svg" alt="" class="w-12">{{/isSex}}
+                {{#isSex dog "male"}}<img src="../../assets/male.png" alt="" class="w-10 justify-self-end">{{/isSex}}
+                {{#isSex dog "female"}}<img src="../../assets/female.png" alt="" class="w-10 justify-self-end">{{/isSex}}
               </div>
               <div>
                 <h3>Sex</h3>
@@ -126,8 +146,8 @@
 
             {{#if dog.livingWithChildren}}
             <div class="rounded-lg bg-white/80 p-4 flex items-center gap-3">
-              <div >
-
+              <div class="w-11">
+                <img src="../../assets/children.png" alt="" class="w-11">
               </div>
               
               <div>
@@ -139,8 +159,8 @@
 
             {{#if dog.livingWithDogs}}
             <div class="rounded-lg bg-white/80 p-4 flex items-center gap-3">
-              <div>
-
+              <div class="w-11">
+                <img src="../../assets/chien.png" alt="" class="w-11">
               </div>
               <div>
                 <h3>Living with dogs</h3>
@@ -150,9 +170,9 @@
             {{/if}}
 
             {{#if dog.livingWithCats}}
-            <div class="rounded-lg bg-white/80 p-4 items-center gap-3">
-              <div>
-
+            <div class="rounded-lg bg-white/80 p-4 flex items-center gap-3">
+              <div class="w-11">
+                <img src="../../assets/chat.png" alt="" class="w-10">
               </div>
               <div>
                 <h3>Living with cats</h3>
@@ -163,7 +183,7 @@
 
           </article>
 
-          <article class="col-start-2 rounded-lg  bg-white/80 row-span-full justify-items-center p-8 ">
+          <article class="mt-8 md:m-0 col-start-2 rounded-lg  bg-white/80 row-span-full justify-items-center p-8  ">
               <h3 class="text-3xl mb-8">Apply to adopt {{dog.name}}</h3>
               <div class="flex flex-col gap-2 my-4">
                 <a href="" class="inline-block text-center w-full rounded-lg bg-cta text-white p-4 mb-4">Start your application</a>
@@ -171,31 +191,22 @@
               </div>
           </article>
         </div>
-      </div>
-    </section>
 
-    <section class="p-8 my-auto">
-      <div class="w-[90%] mb-8 mx-auto">
+
+    {{#if dog.about}}
+      <div class="mb-8 mx-auto">
         <h3 class="text-3xl">More about {{dog.name}}:</h3>
         <p>{{dog.about}}</p>
       </div>
-
+    {{/if}}
+    
+      </div>
     </section>
 
 
-
-
-
-
-
-
-  
-
-
-  
-
-
-
+    <section class="w-[90%] p-8 mx-auto">
+      <h2>Adoption process</h2>
+    </section>
 
 
   </header>
