@@ -4,31 +4,30 @@
 
     <section class="mx-auto flex flex-col items-center bg-linear p-8">
         
-        <input type="checkbox" id="toggle-next" class="peer/toggle-next hidden" />
-        <input type="checkbox" id="toggle-prev" class="peer/toggle-prev hidden" />
+        <input type="checkbox" id="toggle-next" class="peer/toggle-next hidden"/>
+        <input type="checkbox" id="toggle-prev" class="peer/toggle-prev hidden"/>
 
-      <div class="order-last m-8">
+      <div class="order-last pt-6">
 
         <label for="toggle-prev" class="rounded-full px-4 py-3 bg-white/40 font-mono font-bold transition-all hover:bg-white cursor-pointer"><</label>
         <label for="toggle-next" class="rounded-full px-4 py-3  bg-white/40 font-mono font-bold transition-all hover:bg-white cursor-pointer">></label>
 
       </div>
 
-      <div class="md:grid md:grid-cols-[2fr_1fr] md:grid-rows-2 gap-6 md:max-h-[800px] overflow-hidden">
+      <figure class="md:grid md:grid-cols-[2fr_1fr] md:grid-rows-2 gap-6 md:max-h-[800px] overflow-hidden ">
         
-        <img src="{{getImageByIndex dog.images 0}}" alt="{{dog.name}}'s photo" class="mb-4 md:mb-0 col-start-1 row-span-full h-full rounded-lg aspect-[4/3] object-cover">
+        <img src="{{getImageByIndex dog.images 0}}" alt="{{dog.name}}'s photo" class=" mb-4 md:mb-0 col-start-1 row-span-full h-full rounded-lg aspect-[4/3] object-cover">
 
-
-        <div class="row-start-1 row-end-2 aspect-[4/3] overflow-hidden rounded-lg">
+        <figure class="row-start-1 row-end-2 aspect-[4/3] overflow-hidden rounded-lg">
           <img src="{{getImageByIndex dog.images 1}}" alt="{{dog.name}}'s photo" class="mb-4 md:mb-0 w-full object-cover">
-        </div>
+        </figure>
 
-        <div class="row-start-2 row-end-3  aspect-[4/3] overflow-hidden rounded-lg">
+        <figure class="row-start-2 row-end-3  aspect-[4/3] overflow-hidden rounded-lg">
           <img src="{{getImageByIndex dog.images 2}}" alt="{{dog.name}}'s photo" class="mb-4 md:mb-0 w-full object-cover">
-        </div>
+        </figure>
           
           
-      </div>
+      </figure>
 
     </section> 
 
@@ -82,10 +81,10 @@
             {{/if}}
 
             <div class="rounded-lg bg-white/60 p-2 flex items-center gap-3">
-              <div class="w-12">
+              <figure class="w-12">
                 {{#isSex dog "male"}}<img src="../../assets/male.png" alt="" class="w-10 justify-self-end">{{/isSex}}
                 {{#isSex dog "female"}}<img src="../../assets/female.png" alt="" class="w-10 justify-self-end">{{/isSex}}
-              </div>
+              </figure>
               <div>
                 <h3>Sex</h3>
                 <p>{{dog.sex}}</p>
@@ -93,9 +92,9 @@
             </div>
 
             <div class="rounded-lg bg-white/80 p-2 flex items-center gap-3">
-              <div class="w-12">
+              <figure class="w-12">
                 <img src="../../assets/age.png" alt="" class="w-10 justify-self-end">
-              </div>
+              </figure>
               <div>
                 <h3>Age</h3>
                 <p>{{dog.age}} years old</p>
@@ -104,9 +103,9 @@
 
 
             <div class="rounded-lg bg-white/80 p-4 flex items-center gap-3">
-              <div class="w-11">
+              <figure class="w-11">
                 <img src="../../assets/size.png" alt="" class=" w-11 justify-self-end">
-              </div>
+              </figure>
               <div>
                 <h3>Size</h3>
                 <p>{{dog.size}}</p>
@@ -115,9 +114,9 @@
 
             {{#if dog.weight}}
             <div class="rounded-lg bg-white/80 p-4 flex items-center gap-3">
-              <div class="w-11">
+              <figure class="w-11">
                 <img src="../../assets/kg.png" alt="" class="w-10">
-              </div>
+              </figure>
               <div>
                 <h3>Weight</h3>
                 <p>{{dog.weight}} kg</p>
@@ -127,9 +126,9 @@
 
             {{#if dog.breed}}
             <div class="rounded-lg bg-white/80 p-4 flex items-center gap-3">
-              <div class="w-11">
+              <figure class="w-11">
                 <img src="../../assets/dog.png" alt="" class="">
-              </div>
+              </figure>
               <div>
                 <h3>Breed</h3>
                 <p>{{dog.breed}}</p>
@@ -139,9 +138,9 @@
 
             {{#if dog.idealHome}}
             <div class="rounded-lg bg-white/80 p-4 flex items-center gap-3">
-              <div class="w-11">
+              <figure class="w-11">
                 <img src="../../assets/homeIdeal.png" alt="" class="">
-              </div>
+              </figure>
               
               <div>
                 <h3>Ideal home</h3>
@@ -152,9 +151,9 @@
 
             {{#if dog.livingWithChildren}}
             <div class="rounded-lg bg-white/80 p-4 flex items-center gap-3">
-              <div class="w-11">
+              <figure class="w-11">
                 <img src="../../assets/children.png" alt="" class="w-11">
-              </div>
+              </figure>
               
               <div>
                 <h3>Living with children</h3>
@@ -165,9 +164,9 @@
 
             {{#if dog.livingWithDogs}}
             <div class="rounded-lg bg-white/80 p-4 flex items-center gap-3">
-              <div class="w-11">
+              <figure class="w-11">
                 <img src="../../assets/chien.png" alt="" class="w-11">
-              </div>
+              </figure>
               <div>
                 <h3>Living with dogs</h3>
                 <p>{{dog.livingWithDogs}}</p>
@@ -177,9 +176,9 @@
 
             {{#if dog.livingWithCats}}
             <div class="rounded-lg bg-white/80 p-4 flex items-center gap-3">
-              <div class="w-11">
+              <figure class="w-11">
                 <img src="../../assets/chat.png" alt="" class="w-10">
-              </div>
+              </figure>
               <div>
                 <h3>Living with cats</h3>
                 <p>{{dog.livingWithCats}}</p>

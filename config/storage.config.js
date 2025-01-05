@@ -13,7 +13,8 @@ console.log('Cloudinary Config:', cloudinary.config());
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: 'shelter'
+    folder: 'shelter',
+    allowed_formats: ['jpg', 'jpeg', 'png', 'gif']
   },
 });
 

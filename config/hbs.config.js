@@ -52,3 +52,7 @@ hbs.registerHelper('isMaxAge', (value) => {
 hbs.registerHelper('getImageByIndex', function(imagesArray, index) {
   return imagesArray && imagesArray[index] ? imagesArray[index] : '';
 });
+
+hbs.registerHelper('changeImageOnClick', function(imagesArray, index) {
+  return imagesArray && imagesArray[index] ? imagesArray[index] : '';
+});
